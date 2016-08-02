@@ -3,4 +3,4 @@
 ***
 ###文章  
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
-+ [`prototype VS __proto__`](https://github.com/xlshen/JavaScript/issues/2 "prototype VS __proto__")
++ [`prototype` VS `__proto__`](https://github.com/xlshen/JavaScript/issues/2 "prototype VS __proto__")
