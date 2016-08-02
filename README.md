@@ -5,4 +5,4 @@
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
 + [`prototype` VS `__proto__`](https://github.com/xlshen/JavaScript/issues/2 "prototype VS __proto__")
 + [`new Function()`时到底发生了什么!?](https://github.com/xlshen/JavaScript/issues/3 "new Function()`时到底发生了什么!?")
-+ [`Scope Chain = Activation Object + [[Scope]]`](https://github.com/xlshen/JavaScript/issues/3 "Scope Chain")
++ [`Scope Chain = Activation Object + [[Scope]]`](https://github.com/xlshen/JavaScript/issues/4 "Scope Chain")
