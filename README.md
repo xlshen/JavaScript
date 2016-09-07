@@ -7,3 +7,4 @@
 + [`new Function()`时到底发生了什么!?](https://github.com/xlshen/JavaScript/issues/3 "new Function()`时到底发生了什么!?")
 + [`Scope Chain = Activation Object + [[Scope]]`](https://github.com/xlshen/JavaScript/issues/4 "Scope Chain")
 + [`函数（Function）`](https://github.com/xlshen/JavaScript/issues/5 "函数")
++ [`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
