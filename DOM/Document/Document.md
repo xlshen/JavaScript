@@ -12,5 +12,5 @@
 `HTMLDocument`属性：  
 1. `title` //修改浏览器标题栏`document.title`  
 2. `URL` //完整`URL`
-3. `domain` //域名
+3. `domain` //域名  
 4. `referrer` //来源页面的URL
