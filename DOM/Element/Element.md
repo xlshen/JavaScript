@@ -36,3 +36,5 @@ var val = document.getElementById('myDiv').getAttribute('data-special');
 有两类特殊的特性，它们虽然有对应的属性名，但属性值与通过`getAttribute()`返回的值不同。
 1. `style`特性  
 通过`getAttribute()`访问时返回的`style`特性值包含的是`CSS`文本，而通过属性来访问则返回一个对象。
+2. `onclick`特性
+通过`getAttribute()`访问时返回相应代码的字符串。而访问`onclick`属性是，则会返回一个`JavaScript`函数（未指定返回`null`）
