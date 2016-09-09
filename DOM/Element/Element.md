@@ -38,3 +38,6 @@ var val = document.getElementById('myDiv').getAttribute('data-special');
 通过`getAttribute()`访问时返回的`style`特性值包含的是`CSS`文本，而通过属性来访问则返回一个对象。  
 2. `onclick`特性  
 通过`getAttribute()`访问时返回相应代码的字符串。而访问`onclick`属性是，则会返回一个`JavaScript`函数（未指定返回`null`）
+#### 设置特性
+`setAttribute('attr', 'value')`通过该方法设置的特性名会统一转换成小写形似，即`"ID"`最终变为`"id"`，为元素添加一个自定义属性，该属性不会自动称为元素的特性。
+`removeAttribute()`这个方法用来彻底删除元素的特性。该方法不仅可以删除特性的值，而且还会从元素中完全删除特性。
