@@ -47,3 +47,19 @@ var val = document.getElementById('myDiv').getAttribute('data-special');
 2. `removeNamedItem(name)`：移除`nodeName`属性等于name的节点  
 3. `setNamedItem(node)`：向列表中添加节点，以节点的`nodeName`属性为索引  
 4. `item(pos)`：返回位于数字`pos`位置处的节点  
+```javascript
+// 以下两种获取元素特性方法等同
+var id = element.attributes.getNamedItem("id").nodeValue;
+var id = element.attributes["id"].nodeValue;
+// 设置元素特性值
+element.attributes["id"].nodeValue = "example";
+// 删除给定名称特性
+var oldAttr = element.attributes["id"].removeNamedItem("id"); // 该返回删除的特性节点【和removeAttribute()唯一区别】
+```
+#### 创建元素
+使用`document.createElement(tagName)`方法创建新元素，`tagName`为元素标签名，创建了新元素的同时也为其设置了ownerDocument属性。
+```javascript
+var div = docuemnt.createElement("div");
+div.id = "myDiv";
+div.className = "example";
+```
