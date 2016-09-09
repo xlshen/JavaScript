@@ -54,7 +54,8 @@ var id = element.attributes["id"].nodeValue;
 // 设置元素特性值
 element.attributes["id"].nodeValue = "example";
 // 删除给定名称特性
-var oldAttr = element.attributes["id"].removeNamedItem("id"); // 该返回删除的特性节点【和removeAttribute()唯一区别】
+var oldAttr = element.attributes["id"].removeNamedItem("id"); 
+// 该返回删除的特性节点【和removeAttribute()唯一区别】
 ```
 #### 创建元素
 使用`document.createElement(tagName)`方法创建新元素，`tagName`为元素标签名，创建了新元素的同时也为其设置了ownerDocument属性。
