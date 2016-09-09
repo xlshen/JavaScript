@@ -25,3 +25,14 @@ div.title = "footer";
 ```
 #### 取得特性
 操作特性的`DOM`方法有三个：`getAttribute()`、`setAttribute()`和`removeAttribute()`
+上面三个属性都可以用`getAttribute()`获取，通过`getAttribute()`还可以获取自定义的特性的值。
+```javascript
+<div id="myDiv" data-special="world"></div>
+<script>
+//根据html5规范，自定义特性应该加上data-前缀以便验证
+var val = document.getElementById('myDiv').getAttribute('data-special'); 
+</script>
+```
+有两类特殊的特性，它们虽然有对应的属性名，但属性值与通过`getAttribute()`返回的值不同。
+1. `style`特性  
+通过`getAttribute()`访问时返回的`style`特性值包含的是`CSS`文本，而通过属性来访问则返回一个对象。
