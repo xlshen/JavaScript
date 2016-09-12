@@ -4,7 +4,7 @@
 ### 知识点系列  
 + [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node/Node.md "Node")  
 + [`Document`](https://github.com/xlshen/JavaScript/edit/master/DOM/Document/Document.md "Node")  
-+ [`Element`](https://github.com/xlshen/JavaScript/edit/master/DOM/Element/Element.md "Element")  
++ [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element/Element.md "Element")  
 
 ### 文章系列
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
