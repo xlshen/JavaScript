@@ -2,7 +2,7 @@
     ((支持请star,表fork) && (支持请star,表fork) && (支持请star,表fork)){3}
 ***
 ### 知识点系列  
-+ [`Node`](https://github.com/xlshen/JavaScript/edit/master/DOM/Node/Node.md "Node")  
++ [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node/Node.md "Node")  
 + [`Document`](https://github.com/xlshen/JavaScript/edit/master/DOM/Document/Document.md "Node")  
 
 ### 文章系列
