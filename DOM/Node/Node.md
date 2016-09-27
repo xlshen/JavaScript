@@ -18,7 +18,7 @@
 2. `insertBefore(newNode, refNode)`// 返回新节点，如果参照节点为`null`，则`insertBefore()`和`appendChild()`执行相同操作  
 3. `replaceChild(newNode, oldNode)`// 替换`oldNode`，返回旧节点  
 4. `removeChild()`// 移除节点  
-// 上面四个方法操纵的都是元素的子节点，所以首先要获取元素的附加点`node.parentNode.xxx(node, xxx)`;
+// 上面四个方法操纵的都是元素的子节点，所以首先要获取元素的父节点`node.parentNode.xxx(node, xxx)`;
 5. `cloneNode(boollean)`// 拷贝节点，参数`true`为深复制，复制该元素及其子元素节点，`false`只复制该元素节点，返回该赋值节点【该方法不会复制节点上的事件处理程序】  
 6. `normalize()`// 规范文档树中的文本节点  
 ```javascript
