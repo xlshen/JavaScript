@@ -10,7 +10,7 @@
 2. `title`，有关元素的附加信息  
 3. `className`，与元素`class`对应  
 例如：
-```javascript
+```html
 <div id="myDiv" class="bd" title="body"></div>
 <script>
 var dir = document.getElementById('myDiv');
@@ -26,7 +26,7 @@ div.title = "footer";
 #### 取得特性
 操作特性的`DOM`方法有三个：`getAttribute()`、`setAttribute()`和`removeAttribute()`
 上面三个属性都可以用`getAttribute()`获取，通过`getAttribute()`还可以获取自定义的特性的值。
-```javascript
+```html
 <div id="myDiv" data-special="world"></div>
 <script>
 //根据html5规范，自定义特性应该加上data-前缀以便验证
@@ -47,7 +47,7 @@ var val = document.getElementById('myDiv').getAttribute('data-special');
 2. `removeNamedItem(name)`：移除`nodeName`属性等于name的节点  
 3. `setNamedItem(node)`：向列表中添加节点，以节点的`nodeName`属性为索引  
 4. `item(pos)`：返回位于数字`pos`位置处的节点  
-```javascript
+```html
 // 以下两种获取元素特性方法等同
 var id = element.attributes.getNamedItem("id").nodeValue;
 var id = element.attributes["id"].nodeValue;
@@ -59,7 +59,7 @@ var oldAttr = element.attributes["id"].removeNamedItem("id");
 ```
 #### 创建元素
 使用`document.createElement(tagName)`方法创建新元素，`tagName`为元素标签名，创建了新元素的同时也为其设置了ownerDocument属性。
-```javascript
+```html
 var div = docuemnt.createElement("div");
 div.id = "myDiv";
 div.className = "example";
