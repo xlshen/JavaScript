@@ -39,7 +39,7 @@ var val = document.getElementById('myDiv').getAttribute('data-special');
 2. `onclick`特性  
 通过`getAttribute()`访问时返回相应代码的字符串。而访问`onclick`属性是，则会返回一个`JavaScript`函数（未指定返回`null`）
 #### 设置特性
-`setAttribute('attr', 'value')`通过该方法设置的特性名会统一转换成小写形似，即`"ID"`最终变为`"id"`，为元素添加一个自定义属性，该属性不会自动称为元素的特性。  
+`setAttribute('attr', 'value')`通过该方法设置的特性名会统一转换成小写形似，即`"ID"`最终变为`"id"`，因为所有的特性都是属性，所以直接给属性赋可以设置特性的值，为元素添加一个自定义属性，该属性不会自动称为元素的特性。  
 `removeAttribute()`这个方法用来彻底删除元素的特性。该方法不仅可以删除特性的值，而且还会从元素中完全删除特性。
 #### attributes属性
 `Element`类型是使用`attributes`属性的唯一一个`DOM`节点类型。`attributes`属性中包含一个`NamedNodeMap`，与`NodeList`类似也是动态集合。元素每个特性都由一个`Attr`节点表示，每个节点都保存在`NamedNodeMap`对象中。NamedNodeMap对象拥有下列方法：  
