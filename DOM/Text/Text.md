@@ -12,3 +12,5 @@
 5. `splitText(offset)`:从`offset`指定的位置将文本分为两个文本节点
 6. `substringData(offset, count)`:提取从`offset`指定位置到`offset+count`位置的字符串
 
+##### 创建文本节点
+> `document.createTextNode(text)`创建文本节点，`text`为要创建的文本
