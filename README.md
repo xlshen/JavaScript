@@ -2,10 +2,10 @@
     ((支持请star,表fork) && (支持请star,表fork) && (支持请star,表fork)){3}
 ***
 ### 知识点系列  
-+ [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node/Node.md "Node")  
-+ [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document/Document.md "Node")  
-+ [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element/Element.md "Element")  
-+ [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr/Attr.md "Attr")
++ [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node.md "Node")  
++ [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document.md "Node")  
++ [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element.md "Element")  
++ [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr.md "Attr")
 
 ### 文章系列
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
