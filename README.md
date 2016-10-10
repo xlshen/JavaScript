@@ -15,3 +15,4 @@
 + [`函数（Function）`](https://github.com/xlshen/JavaScript/issues/5 "函数")
 + [`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
 + [`JavaScript跨域问题`](https://github.com/xlshen/JavaScript/issues/7 "跨域")
++ [`DOM文档解析步骤`](https://github.com/xlshen/JavaScript/issues/8 "DOM解析步骤")
