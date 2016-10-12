@@ -6,6 +6,7 @@
 + [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document.md "Node")  
 + [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element.md "Element")  
 + [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr.md "Attr")
++ [`小技巧系列`](https://github.com/xlshen/JavaScript/blob/master/Tech/Tech.md "小技巧系列")
 
 ### 文章系列
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
