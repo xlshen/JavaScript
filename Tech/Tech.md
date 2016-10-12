@@ -13,4 +13,4 @@ var options = 'XXX'; // XXX是'memory'或者非'XXX'值
 memory = options === 'XXX' && data; // 全等于memory = (options === 'XXX') && data;
 //注：该表达式存储memory的值，如果options为XXX，则memory为data，否则为data的值
 ```
-+ [详见`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
+[详见`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
