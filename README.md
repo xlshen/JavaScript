@@ -19,4 +19,4 @@
 + [`DOM文档解析步骤`](https://github.com/xlshen/JavaScript/issues/8 "DOM解析步骤")
 
 ###jQuery乱弹系列  
-+ [`Sizzle V2.3.0分词`]((https://github.com/xlshen/JavaScript/blob/master/jQuery/Tokenize.md)
++ [`Sizzle V2.3.0分词`](https://github.com/xlshen/JavaScript/blob/master/jQuery/Tokenize.md)
