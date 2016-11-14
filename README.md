@@ -17,6 +17,3 @@
 + [`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
 + [`JavaScript跨域问题`](https://github.com/xlshen/JavaScript/issues/7 "跨域")
 + [`DOM文档解析步骤`](https://github.com/xlshen/JavaScript/issues/8 "DOM解析步骤")
-
-###jQuery乱弹系列(Sizzle V2.3.0)  
-+ [`Sizzle分词`](https://github.com/xlshen/JavaScript/blob/master/jQuery/Tokenize.md)
