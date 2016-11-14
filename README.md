@@ -1,14 +1,14 @@
 # JavaScript Series
     ((支持请star,表fork) && (支持请star,表fork) && (支持请star,表fork)){3}
 ***
-### 知识点系列  
+### 知识点乱弹系列  
 + [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node.md "Node")  
 + [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document.md "Node")  
 + [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element.md "Element")  
 + [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr.md "Attr")
 + [`小技巧系列`](https://github.com/xlshen/JavaScript/blob/master/Tech/Tech.md "小技巧系列")
 
-### 文章系列
+### 文章乱弹系列
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
 + [`prototype` VS `__proto__`](https://github.com/xlshen/JavaScript/issues/2 "prototype VS __proto__")
 + [`new Function()`时到底发生了什么!?](https://github.com/xlshen/JavaScript/issues/3 "new Function()`时到底发生了什么!?")
@@ -17,3 +17,6 @@
 + [`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
 + [`JavaScript跨域问题`](https://github.com/xlshen/JavaScript/issues/7 "跨域")
 + [`DOM文档解析步骤`](https://github.com/xlshen/JavaScript/issues/8 "DOM解析步骤")
+
+###jQuery乱弹系列  
++ [`Sizzle V2.3.0分词`]((https://github.com/xlshen/JavaScript/blob/master/jQuery/Tokenize.md)
