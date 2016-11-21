@@ -7,7 +7,6 @@
 + [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element.md "Element")  
 + [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr.md "Attr")
 + [`小技巧系列`](https://github.com/xlshen/JavaScript/blob/master/Tech/Tech.md "小技巧系列")
-+ [`Flex布局`](https://github.com/xlshen/JavaScript/blob/master/Flex/Flex.md "Flex布局")
 
 ### 文章乱弹系列
 + [`this`的前世今生](https://github.com/xlshen/JavaScript/issues/1 "this前世今生")
