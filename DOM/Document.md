@@ -14,3 +14,11 @@
 2. `URL` //完整`URL`  
 3. `domain` //域名  
 4. `referrer` //来源页面的URL
+`HTMLDocument`方法：  
+1. `namedItem`，可以通过元素的name特性取得集合中项
+```html
+  <img src="image.png" name="image">
+```
+```javascript
+  var image = document.getElementsByTagName("img").namedItem("image");
+```
