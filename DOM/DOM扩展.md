@@ -29,9 +29,9 @@ document.body.webkitMatchesSelector(".bodies");
   div.classList.toggle("user");
 ```
 #### 插入标记
-1. innerHTML属性 // 不包含定位元素
-2. outerHTML属性 // 包含定位元素
-3. insertAdjacentHTML()方法。  
+1. `innerHTML`属性 // 不包含定位元素
+2. `outerHTML`属性 // 包含定位元素
+3. `insertAdjacentHTML()`方法。  
   ① "beforebegin"， 在当前元素之前插入一个紧邻的同辈元素  
   ② "afterbegin"，在当前元素之下插入一个新的子元素或在第一个子元素之前再插入一个新的子元素  
   ③ "beforeend"，在当前元素之下插入一个新的子元素或在最后子元素之后再插入一个新的子元素  
@@ -46,3 +46,6 @@ element.insertAdjacentHTML("beforeend", "<p>Hello World</p>");
 // 作为后一个同辈元素插入
 element.insertAdjacentHTML("afterend", "<p>Hello World</p>");
 ```
+#### 专有扩展
+1. `children`属性 // 返回所有子元素
+2. `contains()`方法 // 某个节点是不是后代节点、
