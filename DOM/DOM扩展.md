@@ -37,6 +37,12 @@ document.body.webkitMatchesSelector(".bodies");
   ③ "beforeend"，在当前元素之下插入一个新的子元素或在最后子元素之后再插入一个新的子元素  
   ④ "afterend"，在当前元素之后插入一个紧邻的同辈元素  
 ```javascript
+// 作为前一个同辈元素插入
 element.insertAdjacentHTML("beforebegin", "<p>Hello World</p>");
+// 作为第一个子元素插入
 element.insertAdjacentHTML("afterbegin", "<p>Hello World</p>");
+// 作为最后一个子元素插入
+element.insertAdjacentHTML("beforeend", "<p>Hello World</p>");
+// 作为后一个同辈元素插入
+element.insertAdjacentHTML("afterend", "<p>Hello World</p>");
 ```
