@@ -25,6 +25,6 @@ document.body.webkitMatchesSelector(".bodies");
 
 ```javascript
   div.classList.add("user");
-  div.remove("user");
-  div.toggle("user");
+  div.classList.remove("user");
+  div.classList.toggle("user");
 ```
