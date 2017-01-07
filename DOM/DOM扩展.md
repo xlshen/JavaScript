@@ -6,5 +6,11 @@
 document.body.querySelector("#list");
 element.querySelector("#list");
 document.body.querySelectorAll(".list");
-document.body.webkitMatchesSelector("bodies");
+document.body.webkitMatchesSelector(".bodies");
 ```
+#### 元素遍历  
+1. childElementCount // 子元素的个数 
+2. firstElementChild // 第一个子元素
+3. lastElementChild // 最后一个子元素
+4. previousElementSibling // 前一个同辈元素
+5. nextElementSibling // 后一个同辈元素
