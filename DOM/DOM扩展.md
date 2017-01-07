@@ -28,3 +28,15 @@ document.body.webkitMatchesSelector(".bodies");
   div.classList.remove("user");
   div.classList.toggle("user");
 ```
+#### 插入标记
+1. innerHTML属性 // 不包含定位元素
+2. outerHTML属性 // 包含定位元素
+3. insertAdjacentHTML()方法。  
+  ① "beforebegin"， 在当前元素之前插入一个紧邻的同辈元素  
+  ② "afterbegin"，在当前元素之下插入一个新的子元素或在第一个子元素之前再插入一个新的子元素  
+  ③ "beforeend"，在当前元素之下插入一个新的子元素或在最后子元素之后再插入一个新的子元素  
+  ④ "afterend"，在当前元素之后插入一个紧邻的同辈元素  
+```javascript
+element.insertAdjacentHTML("beforebegin", "<p>Hello World</p>");
+element.insertAdjacentHTML("afterbegin", "<p>Hello World</p>");
+```
