@@ -40,6 +40,6 @@ function getBoundingClientRect(element){
     left: rect.left + offset,
     bottom: rect.bottom + offset,
     right: rect.right + offset
-    }
+  }
 }
 ```
