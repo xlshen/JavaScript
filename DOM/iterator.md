@@ -17,3 +17,11 @@ var iterator = document.createNodeIterator(root, NodeFilter.SHOW_ELEMENT, filter
 // var iterator = document.createNodeIterator(document, NodeFilter.SHOW_ALL, null, false);
 ```
 NodeFilterIterator类型的主要两个方法：nextNode()和previousNode()
+
+##### TreeWalker  
+TreeWalker除了nextNode()和previousNode()方法之外还有：
++ parentNode(): 遍历到当前节点的父节点
++ firstChild(): 遍历到当前节点的第一个子节点
++ lastChild(): 遍历到当前节点的最后子节点
++ nextSibling(): 遍历到当前节点的下一个同辈节点
++ previousSibling(): 遍历到当前节点的上一个同辈节点
