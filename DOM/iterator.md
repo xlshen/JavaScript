@@ -26,3 +26,5 @@ TreeWalker除了nextNode()和previousNode()方法之外还有：
 + lastChild(): 遍历到当前节点的最后子节点
 + nextSibling(): 遍历到当前节点的下一个同辈节点
 + previousSibling(): 遍历到当前节点的上一个同辈节点
+
+filter进行了扩展,除了NodeFilter.FILTER_ACCEPT和NodeFilter.FILTER_SKIP之外，还可以使用NodeFilter.FILTER_REJECT。其中NodeFilter.FILTER_SKIP和NodeFilter.FILTER_REJECT作用相同：跳过指定的节点。区别在于NodeFilter.FILTER_REJECT会跳过响应节点及其所有子节点，而NodeFilter.FILTER_SKIP会跳过该节点，继续其子节点
