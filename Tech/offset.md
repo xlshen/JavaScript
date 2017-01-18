@@ -22,3 +22,24 @@
 ##### 确定元素大小
 > getBoundingClientRect()方法，这个方法返回一个矩形对象，包含4个属性：left,top,right,bottom
 
+```javascript
+function getBoundingClientRect(element){
+  if(typeof arguments.callee.offset !== "number"){
+    var scrollTop = document.documentElement.scrollTop;
+    var temp = document.createElement("div");
+    temp.style.cssText = "position:absolute;top:0;left:0";
+    document.body.append(temp);
+    arguments.callee.offset = -temp.getBoundingClientRect().offset - scrollTop;
+    document.body.removeChild(temp);
+    temp = null;
+  }
+  var rect = element.getBoundingClientRect();
+  var offset = arguments.callee.offset;
+  return {
+    top: rect.top + offset,
+    left: rect.left + offset,
+    bottom: rect.bottom + offset,
+    right: rect.right + offset
+    }
+}
+```
