@@ -7,3 +7,8 @@
 4. offsetTop: 元素上边框到包含该元素的上内边框之间的像素距离  
 
 其中offsetLeft和offsetTop和包含元素有关，包含元素引用保存在offsetParent属性中，offsetParent属性不一定与parentNode的值相等。
+##### 客户区大小
+> 元素内容及其内边距所占据的空间大小  
+1. clientWidth: 内容区宽度加左右内边距宽度  
+2. clientHeight: 内容区高度加上下内边距高度
+
