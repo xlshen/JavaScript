@@ -1,5 +1,5 @@
 #### 事件
-##### 跨浏览器事件对象
+跨浏览器事件对象:
 ```javascript
   var Event = {
     addHandle: function(element, type, handler){
