@@ -33,7 +33,7 @@
         event.returnValue = false;
       }
     },
-    stopPropagation: function(){
+    stopPropagation: function(event){
       if(event.stopPropagation){
         event.stopPropagation();
       }else{
