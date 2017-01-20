@@ -20,8 +20,25 @@
         element["on" + type] = null;
       }
     },
-    getEvent: function(){
-      
+    getEvent: function(event){
+      return event ? event : window.event;
+    },
+    getTarget: function(event){
+      return event.target ? event.target : event.srcElement;
+    },
+    preventDefault: function(event){
+      if(event.preventDefault){
+        event.preventDefault();
+      }else{
+        event.returnValue = false;
+      }
+    },
+    stopPropagation: function(){
+      if(event.stopPropagation){
+        event.stopPropagation();
+      }else{
+        event.cancelBubble = true;
+      }
     }
-  }
+  }
 ```
