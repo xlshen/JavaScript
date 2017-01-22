@@ -85,7 +85,7 @@
   });
 ```
 2. 页面坐标位置    
-页面坐标通过事件对象的pageX和pageY属性，可以获取事件在页面中什么位置发生，而非视窗位置。    
+页面坐标通过事件对象的`pageX`和`pageY`属性，可以获取事件在页面中什么位置发生，而非视窗位置。    
 ```javascript
   var div = document.getElementById("myDiv");
   Event.addHandler(div, "click", function(event){
@@ -105,4 +105,27 @@
     }
     console.log("Client coordinates: " + event.pageX + ", " + event.pageY);
   });
+```
+3. 屏幕坐标位置    
+鼠标事件发生时相对于电脑屏幕的位置，通过`screenX`和`screenY`属性获取    
+4. 修改键    
+键盘上的某些键的状态可以影响所要采取的操作，这些修改键就是shiftKey，ctrlKey，altKey，metaKey(Window键或键)，这些属性都是布尔值，如果相应的键被按下，则为true，否值为false。当鼠标事件触发时，可以检测这几个属性的状态：    
+```javascript
+  Event.addHandler(div, "click", function(event){
+    event = Event.getEvent(event);
+    var keys = new Array();
+    if(event.shiftKey){
+      keys.push("shift");
+    }
+    if(event.ctrlKey){
+      keys.push("ctrl");
+    }
+    if(event.altKey){
+      keys.push("alt");
+    }
+    if(event.metaKey){
+      keys.push("meta");
+    }
+    console.log("Keys: " + keys.join(", "));
+   });
 ```
