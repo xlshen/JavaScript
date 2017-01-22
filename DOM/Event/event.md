@@ -75,12 +75,34 @@
   7. `dblclick`  
 
 ##### mousewheel事件  
-1. 客户区坐标位置  
+1. 客户区坐标位置    
 鼠标事件都是在浏览器适口中特定位置触发，这个位置信息保存在事件对象`clientX`和`clientY`属性中。所有浏览器都支持这两个属性，它们表示事件发生时鼠标指针在适口中的水平和垂直坐标。  
 ```javascript
   var div = document.getElementById("myDiv");
   Event.addHandler(div, "click", function(event){
     event = Event.getEvent(event);
     console.log("Client coordinates: " + event.clientX + ", " + event.clientY);
+  });
+```
+2. 页面坐标位置    
+页面坐标通过事件对象的pageX和pageY属性，可以获取事件在页面中什么位置发生，而非视窗位置。    
+```javascript
+  var div = document.getElementById("myDiv");
+  Event.addHandler(div, "click", function(event){
+    event = Event.getEvent(event);
+    console.log("Client coordinates: " + event.pageX + ", " + event.pageY);
+  });
+  // IE8及之前不支持，需要通过计算获取
+  Event.addHandler(div, "click", function(event){
+    event = Event.getEvent(event);
+    var pageX = event.pageX,
+        pageY = event.pageY;
+    if(pageY === undefined){
+      pageY = event.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+    }
+    if(pageX === undefined){
+      pageX = event.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+    }
+    console.log("Client coordinates: " + event.pageX + ", " + event.pageY);
   });
 ```
