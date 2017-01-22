@@ -74,8 +74,7 @@
   6. `click`  
   7. `dblclick`  
 
-##### mousewheel事件  
-1. 客户区坐标位置    
+##### 客户区坐标位置    
 鼠标事件都是在浏览器适口中特定位置触发，这个位置信息保存在事件对象`clientX`和`clientY`属性中。所有浏览器都支持这两个属性，它们表示事件发生时鼠标指针在适口中的水平和垂直坐标。  
 ```javascript
   var div = document.getElementById("myDiv");
@@ -84,7 +83,7 @@
     console.log("Client coordinates: " + event.clientX + ", " + event.clientY);
   });
 ```
-2. 页面坐标位置    
+##### 页面坐标位置    
 页面坐标通过事件对象的`pageX`和`pageY`属性，可以获取事件在页面中什么位置发生，而非视窗位置。    
 ```javascript
   var div = document.getElementById("myDiv");
@@ -106,9 +105,9 @@
     console.log("Client coordinates: " + event.pageX + ", " + event.pageY);
   });
 ```
-3. 屏幕坐标位置    
+##### 屏幕坐标位置    
 鼠标事件发生时相对于电脑屏幕的位置，通过`screenX`和`screenY`属性获取    
-4. 修改键    
+##### 修改键    
 键盘上的某些键的状态可以影响所要采取的操作，这些修改键就是shiftKey，ctrlKey，altKey，metaKey(Window键或键)，这些属性都是布尔值，如果相应的键被按下，则为true，否值为false。当鼠标事件触发时，可以检测这几个属性的状态：    
 ```javascript
   Event.addHandler(div, "click", function(event){
@@ -129,7 +128,7 @@
     console.log("Keys: " + keys.join(", "));
    });
 ```
-5. 相关元素  
+##### 相关元素  
 DOM通过event对象的relatedTarget属性提供了相关元素的信息。这个属性只对于mouseover和mouseout事件才包含值；对于其他事件这个属性为null；IE8不支持relatedTarget属性，在mouseover事件触发时，IE的fromElement属性中保存了相关元素；在mouseout事件触发时，IE的toElement属性保存着相关元素。  
 ```javascript
   var Event = {
@@ -146,4 +145,4 @@ DOM通过event对象的relatedTarget属性提供了相关元素的信息。这�
     }
   }
 ```
-6. 鼠标按钮  
+##### 鼠标按钮  
