@@ -157,4 +157,13 @@
 触发顺序：`keydown->keypress->keyup`，其中`keydown`和`keypress`都是再文本框变化之前被触发，而`keyup`是在文本框发生变化后触发。如果用户按下一个字符键不放，就会重复触发keydown和keypress事件  
 
 如果用户按下一个非字符键，首先触发`keydown`事件，然后是`keyup`。
-当发生`keydown`和`keyup`时，`event·对象的`keyCode`属性中包含一个代码，与键盘上一个特定的键对应。
+当发生`keydown`和`keyup`时，`event`对象的`keyCode`属性中包含一个代码，与键盘上一个特定的键对应。
+
+##### textInput事件
+"DOM3级事件"引入了一个新事件：textInput。当用户在可编辑区域中输入字符时就会触发这个事件。由于textInput考虑的是字符，因此它的event对象中包含一个data属性，这个属性的值就是用户输入的字符。
+```javascript
+  Event.addHandler(textbox, "textInput", function(event){
+    event = Event.getEvent(event);
+    console.log(event.data);
+  });
+```
