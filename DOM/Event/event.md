@@ -73,3 +73,14 @@
   5. `mouseup`
   6. `click`  
   7. `dblclick`  
+
+##### mousewheel事件  
+1. 客户区坐标位置  
+鼠标事件都是在浏览器适口中特定位置触发，这个位置信息保存在事件对象`clientX`和`clientY`属性中。所有浏览器都支持这两个属性，它们表示事件发生时鼠标指针在适口中的水平和垂直坐标。  
+```javascript
+  var div = document.getElementById("myDiv");
+  Event.addHandler(div, "click", function(event){
+    event = Event.getEvent(event);
+    console.log("Client coordinates: " + event.clientX + ", " + event.clientY);
+  });
+```
