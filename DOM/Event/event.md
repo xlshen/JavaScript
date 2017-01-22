@@ -129,3 +129,21 @@
     console.log("Keys: " + keys.join(", "));
    });
 ```
+5. 相关元素  
+DOM通过event对象的relatedTarget属性提供了相关元素的信息。这个属性只对于mouseover和mouseout事件才包含值；对于其他事件这个属性为null；IE8不支持relatedTarget属性，在mouseover事件触发时，IE的fromElement属性中保存了相关元素；在mouseout事件触发时，IE的toElement属性保存着相关元素。  
+```javascript
+  var Event = {
+    getRelatedTarget: function(event){
+      if(event.relatedTarget){
+        return event.relatedTarget;
+      }else if(event.toElement){
+        return event.toElement;
+      }else if(event.fromElement){
+        return event.fromElment;
+      }else{
+        return null;
+      }
+    }
+  }
+```
+6. 鼠标按钮  
