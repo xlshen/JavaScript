@@ -146,4 +146,5 @@ DOM通过event对象的relatedTarget属性提供了相关元素的信息。这�
   }
 ```
 ##### 鼠标滚轮事件  
-当用户通过鼠标滚轮与页面交互、在垂直方向上滚动页面时，就会触发mousewheel事件。这个事件可以再任何元素上面触发，最终冒泡到document（IE8）或window（IE9、Opera、Chrome和Safari）对象。
+当用户通过鼠标滚轮与页面交互、在垂直方向上滚动页面时，就会触发mousewheel事件。这个事件可以再任何元素上面触发，最终冒泡到document（IE8）或window（IE9、Opera、Chrome和Safari）对象。  
+其中event对象包含一个特殊的wheelDelta属性。当用户滚动鼠标滚轮时，wheelDelta是120的倍数；当用户向后滚动鼠标滚轮时，wheelDelta是-120的倍数。
