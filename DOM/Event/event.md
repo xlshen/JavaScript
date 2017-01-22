@@ -66,10 +66,10 @@
 + `mouseup`: 用户释放鼠标按钮时触发。  
 【注：除了`mouseenter`和`mouseleave`所有鼠标事件都支持冒泡，也可以被取消】    
 只有在同一个元素上面相继触发`mousedown`和`mouseup`事件，才会触发`click`事件；如果其中一个被取消就不会触发`click`事件。类似的，只有触发两次`click`事件才会触发一次`dblclick`事件，这四个人事件触发顺序：
-1. mousedown  
-2. mouseup  
-3. click  
-4. mousedown
-5. mouseup
-6. click  
-7. dblclick  
+  1. `mousedown`  
+  2. `mouseup`  
+  3. `click`  
+  4. `mousedown`
+  5. `mouseup`
+  6. `click`  
+  7. `dblclick`  
