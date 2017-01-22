@@ -64,7 +64,7 @@
 + `mouseout`: 鼠标移动到另一个元素时触发，移入的元素可以是元素的外部，也可以是元素的子元素。
 + `mouseover`: 鼠标位于一个元素上方时触发。
 + `mouseup`: 用户释放鼠标按钮时触发。  
-【注：除了`mouseenter`和`mouseleave`所有鼠标事件都支持冒泡，也可以被取消】  
+【注：除了`mouseenter`和`mouseleave`所有鼠标事件都支持冒泡，也可以被取消】    
 只有在同一个元素上面相继触发`mousedown`和`mouseup`事件，才会触发`click`事件；如果其中一个被取消就不会触发`click`事件。类似的，只有触发两次`click`事件才会触发一次`dblclick`事件，这四个人事件触发顺序：
 1. mousedown  
 2. mouseup  
