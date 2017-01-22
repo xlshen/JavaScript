@@ -149,10 +149,12 @@
 当用户通过鼠标滚轮与页面交互、在垂直方向上滚动页面时，就会触发`mousewheel`事件。这个事件可以再任何元素上面触发，最终冒泡到`document（IE8）`或`window（IE9、Opera、Chrome和Safari）`对象。  
 其中`event`对象包含一个特殊的`wheelDelta`属性。当用户滚动鼠标滚轮时，`wheelDelta`是`120`的倍数；当用户向后滚动鼠标滚轮时，`wheelDelta`是`-120`的倍数。
 ##### 键盘和文本事件  
-1. keydown：当用户按下键盘任意键触发，如果按住不放，重复触发  
-2. keypress：当用户按下键盘上字符键触发，如果按住不放，重复触发  
-3. keyup：当用户释放键盘上键触发  
-只有一个文本事件：textInput，在文本出入文本框之前会触发textInput事件    
+1. `keydown`：当用户按下键盘任意键触发，如果按住不放，重复触发  
+2. `keypress`：当用户按下键盘上字符键触发，如果按住不放，重复触发  
+3. `keyup`：当用户释放键盘上键触发  
+只有一个文本事件：`textInput`，在文本出入文本框之前会触发`textInput`事件    
 
-触发顺序：keydown->keypress->keyup，其中keydown和keypress都是再文本框变化之前被触发，而keyup是在文本框发生变化后触发。如果用户按下一个字符键不放，就会重复触发keydown和keypress事件  
-如果用户按下一个非字符键，首先触发keydown事件，然后是keyup。
+触发顺序：`keydown->keypress->keyup`，其中`keydown`和`keypress`都是再文本框变化之前被触发，而`keyup`是在文本框发生变化后触发。如果用户按下一个字符键不放，就会重复触发keydown和keypress事件  
+
+如果用户按下一个非字符键，首先触发`keydown`事件，然后是`keyup`。
+当发生`keydown`和`keyup`时，`event·对象的`keyCode`属性中包含一个代码，与键盘上一个特定的键对应。
