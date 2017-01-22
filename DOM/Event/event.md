@@ -108,7 +108,7 @@
 ##### 屏幕坐标位置    
 鼠标事件发生时相对于电脑屏幕的位置，通过`screenX`和`screenY`属性获取    
 ##### 修改键    
-键盘上的某些键的状态可以影响所要采取的操作，这些修改键就是shiftKey，ctrlKey，altKey，metaKey(Window键或键)，这些属性都是布尔值，如果相应的键被按下，则为true，否值为false。当鼠标事件触发时，可以检测这几个属性的状态：    
+键盘上的某些键的状态可以影响所要采取的操作，这些修改键就是`shiftKey`，`ctrlKey`，`altKey`，`metaKey`(`Window`键或键)，这些属性都是布尔值，如果相应的键被按下，则为`true`，否值为`false`。当鼠标事件触发时，可以检测这几个属性的状态：    
 ```javascript
   Event.addHandler(div, "click", function(event){
     event = Event.getEvent(event);
@@ -129,7 +129,7 @@
    });
 ```
 ##### 相关元素  
-DOM通过event对象的relatedTarget属性提供了相关元素的信息。这个属性只对于mouseover和mouseout事件才包含值；对于其他事件这个属性为null；IE8不支持relatedTarget属性，在mouseover事件触发时，IE的fromElement属性中保存了相关元素；在mouseout事件触发时，IE的toElement属性保存着相关元素。  
+`DOM`通过`event`对象的`relatedTarget`属性提供了相关元素的信息。这个属性只对于`mouseover`和`mouseout`事件才包含值；对于其他事件这个属性为`null`；`IE8`不支持`relatedTarget`属性，在`mouseover`事件触发时，`IE`的`fromElement`属性中保存了相关元素；在`mouseout`事件触发时，`IE`的`toElement`属性保存着相关元素。  
 ```javascript
   var Event = {
     getRelatedTarget: function(event){
@@ -146,5 +146,5 @@ DOM通过event对象的relatedTarget属性提供了相关元素的信息。这�
   }
 ```
 ##### 鼠标滚轮事件  
-当用户通过鼠标滚轮与页面交互、在垂直方向上滚动页面时，就会触发mousewheel事件。这个事件可以再任何元素上面触发，最终冒泡到document（IE8）或window（IE9、Opera、Chrome和Safari）对象。  
-其中event对象包含一个特殊的wheelDelta属性。当用户滚动鼠标滚轮时，wheelDelta是120的倍数；当用户向后滚动鼠标滚轮时，wheelDelta是-120的倍数。
+当用户通过鼠标滚轮与页面交互、在垂直方向上滚动页面时，就会触发`mousewheel`事件。这个事件可以再任何元素上面触发，最终冒泡到`document（IE8）`或`window（IE9、Opera、Chrome和Safari）`对象。  
+其中`event`对象包含一个特殊的`wheelDelta`属性。当用户滚动鼠标滚轮时，`wheelDelta`是`120`的倍数；当用户向后滚动鼠标滚轮时，`wheelDelta`是`-120`的倍数。
