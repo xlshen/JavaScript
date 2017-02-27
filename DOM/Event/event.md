@@ -195,6 +195,7 @@
 > 重新加载页面时，pageshow会在load事件触发后触发；而对于有缓存的页面，pageshow会在页面状态完全恢复的那一刻触发。虽然事件的目标是document,但该事件必须添加到window处理
 
 ```html
+<script>
   (function(){
     var showCount = 0;
     Event.addhandle(window, "load", function(){
@@ -205,4 +206,5 @@
       alert("Show has been fired " + showCount + " times.");
     });
   })();
+</script>
 ```
