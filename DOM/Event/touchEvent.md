@@ -31,7 +31,7 @@ target: 触摸DOM节点目标
           output.innerHTML = "Touch ended ( " + event.changeTouches[0].clientX + ", " + event.changeTouches[0].clientY + " .)";
           break;
         case "touchmove":
-          event.preventDefault();
+          event.preventDefault(); 
           output.innerHTML = "Touch moved ( " + event.changeTouches[0].clientX + ", " + event.changeTouches[0].clientY + " .)";
           break;
       }
