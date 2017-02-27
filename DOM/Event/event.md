@@ -189,4 +189,5 @@
       // document.getElementsByTagName("head")[0].appendChild(link);
     });
   </script>
+  [注：readyStatechange和load事件无法预测先后顺序，并且和完成complete阶段都不能保证顺序，所以提前removeHandle]
 ```
