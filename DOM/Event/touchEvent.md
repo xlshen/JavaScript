@@ -7,7 +7,7 @@ touchcancel: 当系统停止跟踪触摸时触发。
 所有事件都会冒泡，除了常见的DOM属性外，触摸事件还包含下列三个用于跟踪触摸的属性：
 > touches: 表示当前跟踪触摸操作的Touch对象的数组    
 targetTouches: 特定于事件目标的Touch对象的数组    
-changeTouches: 表示自上次触摸以来发生了什么变化的Touch对象的数组    
+changedTouches: 表示自上次触摸以来发生了什么变化的Touch对象的数组    
 每个Touch对象包含下列属性:  
 clientX: 触摸目标在视图中x坐标    
 clientY: 触摸目标在视图中y坐标  
