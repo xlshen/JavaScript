@@ -167,7 +167,7 @@
     console.log(event.data);
   });
 ```
-##### readstatechange
+##### readstatechange事件
 ```html
   <script>
     Event.addHandle(window, "load", function(event){
@@ -190,4 +190,19 @@
     });
   </script>
   [注：readyStatechange和load事件无法预测先后顺序，并且和完成complete阶段都不能保证顺序，所以提前removeHandle]
+```
+##### pageshow和pagehide事件
+> 重新加载页面时，pageshow会在load事件触发后触发；而对于有缓存的页面，pageshow会在页面状态完全恢复的那一刻触发。虽然事件的目标是document,但该事件必须添加到window处理
+
+```html
+  (function(){
+    var showCount = 0;
+    Event.addhandle(window, "load", function(){
+      alert("Load fired");
+    });
+    Event.addHandle(window, "pageshow", function(){
+      showCount ++;
+      alert("Show has been fired " + showCount + " times.");
+    });
+  })();
 ```
