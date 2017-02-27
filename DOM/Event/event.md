@@ -167,3 +167,24 @@
     console.log(event.data);
   });
 ```
+##### readstatechange
+```html
+  <script>
+    Event.addHandle(window, "load", function(event){
+      var script = document.createElement("script");
+      // var link = document.createElement("link");
+      // link.type = "text/css";
+      // link.rel = "stylesheet";
+      event = Event.getEvent(event);
+      var target = Event.getTarget(event);
+      
+      Event.addHandle(script, "readyStatechange", function(event){
+         if(target.readyState == "loaded" || target.readyState == "complete"){
+          Event.removeHandle(target, "readyStateChange", arguments.callee);
+        }
+      });
+      script.src = "";
+      document.body.appendChild(script);
+    });
+  </script>
+```
