@@ -20,7 +20,6 @@ target: 触摸DOM节点目标
 ```html
 <script>
   function handleTouchEvent(event){
-  
     // 只跟踪一次触摸
     if(event.touches.length === 1){
       var output = document.getElementById("output");
