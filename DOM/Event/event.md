@@ -208,3 +208,15 @@
   })();
 </script>
 ```
+> pagehide会在浏览器卸载时触发，而且是在unload事件之前触发。与pageshow事件一样，pagehide在document上触发，但是添加到window上处理程序。该事件也包含persised属性。
+
+```html
+<script>
+  Event.addHandle(window, "pagehide", function(){
+    alert("Hiding persisted ? "+ event.persisted);
+  });
+</script>
+```
+
+##### hashchange事件
+> HTML5新增了hashchange事件，需要把该事件添加到window对象，然后URL参数列表只要变化就会调用。event对象中包含oldURL和newURL属性
