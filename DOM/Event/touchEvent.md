@@ -17,3 +17,29 @@ pageY: 触摸目标在页面y坐标
 screenX: 触摸目标在屏幕中的x坐标  
 screenY: 触摸目标在屏幕中的y坐标  
 target: 触摸DOM节点目标  
+```html
+<script>
+  function handleTouchEvent(event){
+  
+    // 只跟踪一次触摸
+    if(event.touches.length === 1){
+      var output = document.getElementById("output");
+      switch(event.type){
+        case "touchstart": 
+          output.innerHTML = "Touch started ( " + event.touches[0].clientX + ", " + event.touches[0].clientY + " .)";
+          break;
+        case "touchend":
+          output.innerHTML = "Touch ended ( " + event.changeTouches[0].clientX + ", " + event.changeTouches[0].clientY + " .)";
+          break;
+        case "touchmove":
+          event.preventDefault();
+          output.innerHTML = "Touch moved ( " + event.changeTouches[0].clientX + ", " + event.changeTouches[0].clientY + " .)";
+          break;
+      }
+    }
+  }
+  Event.addHandle(document, "touchstart", handleTouchEvent);
+  Event.addHandle(document, "touchmove", handleTouchEvent);
+  Event.addHandle(document, "touchend", handleTouchEvent);
+</script>
+```
