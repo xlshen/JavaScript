@@ -26,8 +26,9 @@ target: 触摸DOM节点目标
       switch(event.type){
         case "touchstart": 
           output.innerHTML = "Touch started ( " + event.touches[0].clientX + ", " + event.touches[0].clientY + " .)";
-          break;
-        case "touchend":
+          break;
+        // 此处有误！！！touchend事件不会触发，如果触发touches数组为空，添加判断
+        case "touchend":
           output.innerHTML = "Touch ended ( " + event.changedTouches[0].clientX + ", " + event.changedTouches[0].clientY + " .)";
           break;
         case "touchmove":
@@ -35,10 +36,23 @@ target: 触摸DOM节点目标
           output.innerHTML = "Touch moved ( " + event.changedTouches[0].clientX + ", " + event.changedTouches[0].clientY + " .)";
           break;
       }
+    }else if(event.touches.length === 0){
+      var output = document.getElementById("output");
+      switch(event.type){
+      
+        // 此处判断
+        case "touchend":
+          output.innerHTML = "Touch ended ( " + event.changedTouches[0].clientX + ", " + event.changedTouches[0].clientY + " .)";
+          break;
+        case "touchcancel":
+          output.innerHTML = "Touch ended ( " + event.changedTouches[0].clientX + ", " + event.changedTouches[0].clientY + " .)";
+          break;
+      }
     }
   }
   Event.addHandle(document, "touchstart", handleTouchEvent);
   Event.addHandle(document, "touchmove", handleTouchEvent);
   Event.addHandle(document, "touchend", handleTouchEvent);
+  Event.addHandle(document, "touchcancel", handleTouchEvent);
 </script>
 ```
