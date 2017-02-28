@@ -55,3 +55,8 @@ target: 触摸DOM节点目标
   Event.addHandle(document, "touchcancel", handleTouchEvent);
 </script>
 ```
+##### 手势事件
+> gesturestart: 当一个手指已经按在屏幕上而另一个手指又触摸屏幕时触发  
+gesturechange: 当触摸屏幕的任何一个手指的位置发生变化时触发  
+gestureend: 当任何一个手指从屏幕上面移开时触发  
+触摸事件和手势事件之间存在某种关系。当一个手指放屏幕上触发touchstart事件。如果另一个手指又放到屏幕上，则会先触发gesturestart事件，随后触发基于该手的touchstart事件。如果一个或者两个手指在屏幕上滑动，将会触发gesturechange事件。但只要有一个手指离开，就会触发gestureend事件，紧接着触发该手指的toucheend事件
