@@ -33,4 +33,4 @@
 12. shiftKey(布尔值): 表示是否按下了Shift键。默认false   
 13. metaKey(布尔值): 表示是否按下了Meta键。默认false   
 14. button(整数): 表示按下了哪一个鼠标键。默认0    
-15. relatedTarget(对象): 表示与事件相关的对象。这个参数只在mouseover
+15. relatedTarget(对象): 表示与事件相关的对象。这个参数只在mouseover,mouseout时使用
