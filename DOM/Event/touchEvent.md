@@ -77,8 +77,8 @@ gestureend: 当任何一个手指从屏幕上面移开时触发
         break;
     }
   }
-Event.addHandle(document, "gesturestart", handleGestureEvent);
-Event.addHandle(document, "gesturechange", handleGestureEvent);
-Event.addHandle(document, "gestureend", handleGestureEvent);
+  Event.addHandle(document, "gesturestart", handleGestureEvent);
+  Event.addHandle(document, "gesturechange", handleGestureEvent);
+  Event.addHandle(document, "gestureend", handleGestureEvent);
 </script>
 ```
