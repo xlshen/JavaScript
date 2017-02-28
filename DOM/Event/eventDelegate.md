@@ -63,7 +63,7 @@
       event;
   if(document.implementation.hasFeature("KeyboardEvents", "3.0")){
     event = document.createEvent("KeyboardEvent");
-    event.initKeyboardEvent("keydown", true, true, document.defaultView, "a");
+    event.initKeyboardEvent("keydown", true, true, document.defaultView, "a", 0, "shift", 0);
   }
   textbox.dispatchEvent(event);
 </script>
