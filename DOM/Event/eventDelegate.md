@@ -59,6 +59,12 @@
 由于DOM3不提倡用keypress事件，因此只能用这个技术来模拟keydown和keyup事件
 ```html
 <script>
-  var textbox = document.getElementById("textbox");
+  var textbox = document.getElementById("textbox"), 
+      event;
+  if(document.implementation.hasFeature("KeyboardEvents", "3.0")){
+    event = document.createEvent("KeyboardEvent");
+    event.initKeyboardEvent("keydown", true, true, document.defaultView, "a");
+  }
+  textbox.dispatchEvent(event);
 </script>
 ```
