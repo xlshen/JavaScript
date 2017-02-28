@@ -42,3 +42,19 @@
   btn.dispatchEvent(event);
 </script>
 ```
+##### 模拟键盘事件
+> DOM3规定，调用createEvent()并传入"KeyboardEvent"就可以创建一个键盘事件。返回的事件对象会包含一个initKeyEvent()方法，接收下列参数：
+1. type(字符串): 表示要触发的时间类型，如“keydown”    
+2. bubbles(布尔型): 表示是否应该冒泡。为了精确模拟鼠标事件，应该设置为true    
+3. cancelable(布尔型): 表示事件是否可以取消。为了精确模拟鼠标事件，应该设置为true    
+4. view(AbstractView): 与事件关联的视图。这个参数几乎总是document.defaultView    
+5. key(整数): 表示按下的键码    
+6. location(整数): 表示哪里的键。0表示默认的主键盘，1表示左，2表示右，3表示数字键盘，4表示移动设备（虚拟键盘），5表示手柄    
+7. modifiers(字符串): 空格分隔的修改键列表，如“shift”    
+8. repeat(整数): 在一行中按了这个键多少次   
+由于DOM3不提倡用keypress事件，因此只能用这个技术来模拟keydown和keyup事件
+```html
+<script>
+  var textbox = document.getElementById("textbox");
+</script>
+```
