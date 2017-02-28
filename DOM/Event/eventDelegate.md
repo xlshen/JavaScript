@@ -34,6 +34,8 @@
 13. metaKey(布尔值): 表示是否按下了Meta键。默认false   
 14. button(整数): 表示按下了哪一个鼠标键。默认0    
 15. relatedTarget(对象): 表示与事件相关的对象。这个参数只在mouseover,mouseout时使用
+
+
 ```html
 <script>
   var btn = document.getElementById("btn");
@@ -52,6 +54,8 @@
 6. location(整数): 表示哪里的键。0表示默认的主键盘，1表示左，2表示右，3表示数字键盘，4表示移动设备（虚拟键盘），5表示手柄    
 7. modifiers(字符串): 空格分隔的修改键列表，如“shift”    
 8. repeat(整数): 在一行中按了这个键多少次   
+
+
 由于DOM3不提倡用keypress事件，因此只能用这个技术来模拟keydown和keyup事件
 ```html
 <script>
