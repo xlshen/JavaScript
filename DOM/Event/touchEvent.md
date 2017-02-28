@@ -39,7 +39,6 @@ target: 触摸DOM节点目标
     }else if(event.touches.length === 0){
       var output = document.getElementById("output");
       switch(event.type){
-      
         // 此处判断
         case "touchend":
           output.innerHTML = "Touch ended ( " + event.changedTouches[0].clientX + ", " + event.changedTouches[0].clientY + " .)";
