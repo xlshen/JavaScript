@@ -21,7 +21,11 @@ select事件在选择文本时触发  
 ```html
   <script>
     function getSelectedText(textbox){
-      textbox.value.substring(textbox.selectionStart, textbox.selectedEnd);
+      if(typeof textbox.selectStart === "number"){
+        return textbox.value.substring(textbox.selectionStart, textbox.selectedEnd);
+      }else if(document.selection){
+        return document.selection.createRange().text; // 兼容IE8及之前版本
+      }
     }
   </script>
 ```
