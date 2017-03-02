@@ -31,3 +31,11 @@ select事件在选择文本时触发  
 ```
 ##### 选择部分文本  
 HTML5也为选择文本框中的部分文本提供了解决方案，除了select()方法外，所有文本框都有一个setSelectionRange()方法。这个方法接收两个参数：要选择的第一个字符的索引和要选择的最后一个字符的索引。类似substring()方法
+```html
+  <script>
+    textbox.value = "Hello World!";
+    textbox.setSelectionRange(0, 3);
+    textbox.select();
+  </script>
+```
+[注：要看到选择的文本，调用setSelectionRange之后或者之前立即将焦点设置到文本框]
