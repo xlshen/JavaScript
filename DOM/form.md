@@ -13,4 +13,4 @@
     var fieldCount = form.elements.length;
   </script>
 ```
-如果有多个表单控件都使用同一个name，那么返回一个NodeList。
+如果有多个表单控件都使用同一个name，那么返回一个NodeList。但通过form.elements["color"]中第一个元素相同。
