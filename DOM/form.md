@@ -14,3 +14,14 @@
   </script>
 ```
 如果有多个表单控件都使用同一个name，那么返回一个NodeList。但通过form.elements["color"]中第一个元素相同。
+##### 选择文本
+select()方法用于选择文本框中的所有文本。调用时都会把焦点设置到文本框中。  
+select事件在选择文本时触发  
+取得选择的文本，HTML5扩展了方案解决，添加了两个属性：selectionStart和selectionEnd。都是基于0的数值，表示所选择文本的范围。
+```html
+  <script>
+    function getSelectedText(textbox){
+      textbox.value.substring(textbox.selectionStart, textbox.selectedEnd);
+    }
+  </script>
+```
