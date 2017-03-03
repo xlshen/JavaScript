@@ -99,5 +99,9 @@ HTML5中6个剪切板事件:
   <script>
     <input type="email" name="name" />
     <input type="url" name="home" />
-  </script>
+    // 判断浏览器是否支持type属性
+    var input = document.createElement("input");
+    input.type = "email";
+    var isEmailSupported = (input.type === "email"); // 不支持的自动将未知值设置为text,支持的会返回正确的值
+  </script>
 ```
