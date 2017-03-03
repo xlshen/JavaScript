@@ -66,3 +66,22 @@ HTML5中6个剪切板事件:
     };
   </script>
 ```
+##### 自动切换焦点
+```html
+  <script>
+    function tabForward(event){
+      var target = event.target;
+      if(target.value.length === target.maxLength){
+        var form = target.form;
+        for(var i = 0, len = form.elements.length; i < len; i++){
+          if(form.elements[i] === target){
+            if(form.elements[i + 1]){
+              form.elements[i + 1].focus();
+            }
+            return;
+          }
+        }
+      }
+    }
+  </script>
+```
