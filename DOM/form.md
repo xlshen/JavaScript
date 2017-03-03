@@ -40,3 +40,29 @@ HTML5也为选择文本框中的部分文本提供了解决方案，除了select
 ```
 [注：要看到选择的文本，调用setSelectionRange之后或者之前立即将焦点设置到文本框]
 ##### 操作剪切板
+HTML5中6个剪切板事件:  
+1. beforecopy: 在发生复制操作前触发  
+2. copy: 在发生复制操作时触发  
+3. beforecut: 在发生剪切操作前触发  
+4. cut: 在发生剪切操作时触发  
+5. beforepaste: 在发生粘贴操作前触发  
+6. paste: 在发生粘贴操作时触发  
+要访问剪切板数据，使用clipboardData对象：IE中该对象是window对象属性；在其他浏览器，该对象是对应event对象的属性。但是只有在处理剪切操作期间有效。在IE中可以随时访问clipboardData对象；  
+该对象有三个方法：getData()、setData()和clearData()。
+```html
+  <script>
+    var Event = {
+      getClipboardData: function(event){
+        var clipboardData = (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+      },
+      setClipboardText: function(event, value){
+        if(event.clipboardData){
+          return event.clipboardData.setData("text/plain", value);
+        }else if(window.clipboradData){
+          return window.clipboardData.setData("text", value);
+        }
+      }
+    };
+  </script>
+```
