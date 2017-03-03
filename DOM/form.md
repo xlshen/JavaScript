@@ -94,4 +94,10 @@ HTML5中6个剪切板事件:
     var isRequiredSupported = "required" in document.createElement("input");
   </script>
 ```
-2. 
+2. input增加了type属性值。其中email和url支持最多
+```html
+  <script>
+    <input type="email" name="name" />
+    <input type="url" name="home" />
+  </script>
+```
