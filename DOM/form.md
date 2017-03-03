@@ -85,3 +85,13 @@ HTML5中6个剪切板事件:
     }
   </script>
 ```
+##### HTML5约束验证API
+1. 必填字段 required，适用于input、textarea、select
+```html
+  <script>
+    var isUsernameRequired = document.forms[0].elements["username"].required;
+    // 验证浏览器是否支持required属性
+    var isRequiredSupported = "required" in document.createElement("input");
+  </script>
+```
+2. 
