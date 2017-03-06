@@ -86,7 +86,7 @@ HTML5中6个剪切板事件:
   </script>
 ```
 ##### HTML5约束验证API
-1. 必填字段 required，适用于input、textarea、select
+必填字段 required，适用于input、textarea、select
 ```html
   <script>
     var isUsernameRequired = document.forms[0].elements["username"].required;
@@ -94,7 +94,7 @@ HTML5中6个剪切板事件:
     var isRequiredSupported = "required" in document.createElement("input");
   </script>
 ```
-2. input增加了type属性值。其中email和url支持最多
+input增加了type属性值。其中email和url支持最多
 ```html
   <script>
     <input type="email" name="name" />
@@ -105,14 +105,14 @@ HTML5中6个剪切板事件:
     var isEmailSupported = (input.type === "email"); // 不支持的自动将未知值设置为text,支持的会返回正确的值
   </script>
 ```
-3. 输入模式
+输入模式
 HTML5为文本字段新增了pattern属性。这个属性是一个正则表达式，用于匹配文本框中的的值。
 ```html
   <script>
     <input type="text" pattern="\d+" name="count" title="只能为数字"/>
   </script>
 ```
-4. 检查有效性
+检查有效性
 使用checkValidity()方法可以检测表单中的某个字段是否有效。所有表单字段都有方法，如果有效，该方法返回true,否则false。
 ```html
   <script>
@@ -126,4 +126,24 @@ HTML5为文本字段新增了pattern属性。这个属性是一个正则表达�
       // 表单有效
     }
   </script>
+```
+validity属性
+使用validity属性会判断字段为什么有效或者无效, 每个属性会返回一个布尔值
+```html
+  1. customError: 如果设置了setCustomValidity()，返回true，否则false
+  2. patternMismatch: 如果值与指定的pattern属性不匹配，返回true
+  3. rangeOverflow: 如果值比max大，返回true
+  4. rangeUnderflow: 如果值比min小，返回true
+  5. stepMisMatch: 如果min和max之间的步长不合理，返回true
+  6. tooLong: 如果值长度超过了maxlength属性指定的长度，返回true
+  7. typeMismatch: 如果值不是mail或url要求的格式，返回true
+  8. valid: 如果这里属性都是false，返回true。checkValidity()也要求相同的值
+  9. valueMissing: 如果标记required的字段没有值，返回true
+  <script>
+    if(input.validity && !input.validity.valid){
+      if(input.validity.valueMissing){}
+      else if(input.validity.typeMismatch){}
+      else{}
+    }
+  </script>
 ```
