@@ -105,3 +105,10 @@ HTML5中6个剪切板事件:
     var isEmailSupported = (input.type === "email"); // 不支持的自动将未知值设置为text,支持的会返回正确的值
   </script>
 ```
+3. 输入模式
+HTML5为文本字段新增了pattern属性。这个属性是一个正则表达式，用于匹配文本框中的的值。
+```html
+  <script>
+    <input type="text" pattern="\d+" name="count" title="只能为数字"/>
+  </script>
+```
