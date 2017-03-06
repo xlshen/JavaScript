@@ -157,6 +157,9 @@ validity属性
 ```html
   <form method="post" action="">
     <input type="submit" value="submit-reg"/>
-    <input type="submit" formnovalidate name="submit-no"/>
+    <input type="submit" formnovalidate name="submit-no"/> // 不会验证表单
   </form>
+  <script>
+    document.forms[0].elements["submit-no"].formNoValidate = true; // JavaScript设置非验证提交
+  </script>
 ```
