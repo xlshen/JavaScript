@@ -147,3 +147,16 @@ validity属性
     }
   </script>
 ```
+禁用验证
+通过设置novalidate属性，可以告诉表单不进行验证
+```html
+  <form method="post" action="" novalidate>
+  </form>
+```
+如果一个表单有多个提交按钮，为了指定点击某个提交按钮不必验证表单，可以在相应的按钮上添加formnovalidate属性
+```html
+  <form method="post" action="">
+    <input type="submit" value="submit-reg"/>
+    <input type="submit" formnovalidate name="submit-no"/>
+  </form>
+```
