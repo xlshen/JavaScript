@@ -164,7 +164,7 @@ validity属性
   </script>
 ```
 ##### 选择框脚本
-选择框通过<select>和<option>元素创建。除了所有表单字段共有属性外，HTMLSelectElement类型还提供了下列属性和方法：    
+选择框通过<select>和<option>元素创建。除了所有表单字段共有属性外，HTMLSelectElement类型还提供了下列属性和方法:   
 1. add(newOption, relOption): 向控件中插入新<option>元素，位置再relOption之前    
 2. multiply: 布尔型，表示是否允许多项选择；等价HTML的multiply特性    
 3. options: 控件中所有<option>元素的HTMLCollection    
