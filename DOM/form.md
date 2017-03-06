@@ -112,3 +112,18 @@ HTML5为文本字段新增了pattern属性。这个属性是一个正则表达�
     <input type="text" pattern="\d+" name="count" title="只能为数字"/>
   </script>
 ```
+4. 检查有效性
+使用checkValidity()方法可以检测表单中的某个字段是否有效。所有表单字段都有方法，如果有效，该方法返回true,否则false。
+```html
+  <script>
+    if(document.forms[0].elements[0].checkValidity()){
+      // 字段有效
+    }else{
+      // 字段无效
+    }
+    // 检测整个表单是否有效
+    if(document.forms[0].checkValidity()){
+      // 表单有效
+    }
+  </script>
+```
