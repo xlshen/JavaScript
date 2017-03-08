@@ -52,3 +52,7 @@ clearRect()方法用于清除画布上矩形区域
 ```javascript
 context.clearRect(40, 40, 10, 10);
 ```
+###### 绘制路径
+要绘制路径，首先必须调用`beginPath()`方法，表示要开始绘制路径。然后，在通过调用下面方法来实际绘制路径：  
+> 1. arc(x, y, radius, startAngle, endAngle, counterclockwise):以(x, y)为圆心绘制一条弧线，半径为radius，起始和结束角度（弧度）分别为startAngle和endAngle。最后一个是否按逆时针计算，值为false表示按照顺时针  
+2. arcTo(x1, y1, x2, y2, radius): 从上一个点开始绘制一条弧线，到(x2, y2)为止，并且以给定的半径radius穿过(x1, y1)  
