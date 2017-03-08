@@ -30,10 +30,18 @@ context.strokeStyle = "red";
 context.fillStyle = "#0000ff";
 ```
 ###### 绘制矩形
-矩形是唯一一个可以直接在2D上下文中绘制的形状。方法包括：fillRect()、 strokeRect()和clearRect()。这三个方法都接收4个参数：矩形x坐标，矩形y坐标，矩形宽度，矩形高度。参数单位都是像素。
+矩形是唯一一个可以直接在2D上下文中绘制的形状。方法包括：fillRect()、 strokeRect()和clearRect()。这三个方法都接收4个参数：矩形x坐标，矩形y坐标，矩形宽度，矩形高度。参数单位都是像素。  
+fillRect()方法在画布上绘制的矩形会填充指定的颜色，填充的颜色通过fillStyle属性指定
 ```javascript
 context.fillStyle = "#ff0000";
 context.fillRect(10, 10, 50, 50);
 context.fillStyle = "rgba(0, 0, 255, 0.5)";
 context.fillRect(30, 30, 50, 50);
+```
+strokeRect()方法在画布上回执的矩形会使用指定的颜色描边。描边颜色通过strokeStyle属性指定。
+```javascript
+context.fillStyle = "#ff0000";
+context.strokeRect(10, 10, 50, 50);
+context.fillStyle = "rgba(0, 0, 255, 0.5)";
+context.strokeRect(30, 30, 50, 50);
 ```
