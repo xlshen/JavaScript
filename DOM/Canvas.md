@@ -19,3 +19,7 @@ if(drawing.getContext){
  document.body.appendChild(image);
 }
 ```
+##### 2D上下文
+> 2D上下文坐标开始于`<canvas>`元素的左上角，原点(0,0)。所有坐标值都是基于这个原点计算的。x越大越靠右，y越大越靠下。
+
+填充和描边
