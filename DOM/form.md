@@ -189,3 +189,9 @@ validity属性
     }, false);
   </script>
 ```
+contenteditable属性：
+```html
+  <div class="editable" contenteditable></div>
+  // var div = document.querySelector(".editable");
+  // div.contenteditable = "true" ("true", "false", "inherit")
+```
