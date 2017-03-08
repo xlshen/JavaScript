@@ -48,3 +48,7 @@ context.strokeRect(30, 30, 50, 50);
 // lineCap属性控制线条末端形状平头、圆头还是方头("butt", "round", "square")
 // lineJoin属性控制线条相交是圆交、斜交还是斜接("round", "bevel", "miter")
 ```
+clearRect()方法用于清除画布上矩形区域
+```javascript
+context.clearRect(40, 40, 10, 10);
+```
