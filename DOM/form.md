@@ -179,3 +179,13 @@ validity属性
     selectbox.add(newoption, undefined); // 最佳方案
   </script>
 ```
+##### 富文本编辑
+页面签入iframe，通过设置designMode属性，designMode值有两个："off"(默认值)和"on"。设置为"on"时文档可编辑。只有页面完全加载之后才能设置designMode值。
+```html
+  <iframe name="design" src="" frameborder="0" ></iframe>
+  <script>
+    document.addEventListener("load", function(event){
+      frames["design"].document.designMode = "on"
+    }, false);
+  </script>
+```
