@@ -29,3 +29,11 @@ var context = drawing.getContext("2d");
 context.strokeStyle = "red";
 context.fillStyle = "#0000ff";
 ```
+###### 绘制矩形
+矩形是唯一一个可以直接在2D上下文中绘制的形状。方法包括：fillRect()、 strokeRect()和clearRect()。这三个方法都接收4个参数：矩形x坐标，矩形y坐标，矩形宽度，矩形高度。参数单位都是像素。
+```javascript
+context.fillStyle = "#ff0000";
+context.fillRect(10, 10, 50, 50);
+context.fillStyle = "rgba(0, 0, 255, 0.5)";
+context.fillRect(30, 30, 50, 50);
+```
