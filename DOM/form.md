@@ -184,8 +184,8 @@ validity属性
 ```html
   <iframe name="design" src="" frameborder="0" ></iframe>
   <script>
-    document.addEventListener("load", function(event){
-      frames["design"].document.designMode = "on"
+    window.addEventListener("load", function(event){
+      frames["design"].document.designMode = "on";
     }, false);
   </script>
 ```
