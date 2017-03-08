@@ -171,3 +171,11 @@ validity属性
 4. remove(index): 移除给定位置的选项  
 5. selectedIndex: 基于0的选中项的索引，如果没有选中项，为-1.对于支持多选的控件，只保存选中项的第一个索引  
 6. size: 选择框中可见行数，等价于`HTML`中的`size`特性  
+```html
+  <script>
+    // 添加option选项
+    var newOption = new Option("option text", "option value");
+    // selectbox.appendChild(newOption);
+    selectbox.add(newoption, undefined); // 最佳方案
+  </script>
+```
