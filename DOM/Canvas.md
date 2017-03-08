@@ -44,7 +44,7 @@ context.strokeStyle = "#ff0000";
 context.strokeRect(10, 10, 50, 50);
 context.strokeStyle = "rgba(0, 0, 255, 0.5)";
 context.strokeRect(30, 30, 50, 50);
-// lineWidth属性控制线条宽度
+// lineWidth属性控制线条宽度，可以是任意整数值
 // lineCap属性控制线条末端形状平头、圆头还是方头("butt", "round", "square")
 // lineJoin属性控制线条相交是圆交、斜交还是斜接("round", "bevel", "miter")
 ```
