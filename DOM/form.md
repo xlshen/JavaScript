@@ -164,10 +164,10 @@ validity属性
   </script>
 ```
 ##### 选择框脚本
-选择框通过<select>和<option>元素创建。除了所有表单字段共有属性外，HTMLSelectElement类型还提供了下列属性和方法:  
-1. add(newOption, relOption): 向控件中插入新<option>元素，位置再relOption之前  
-2. multiply: 布尔型，表示是否允许多项选择；等价HTML的multiply特性  
-3. options: 控件中所有<option>元素的HTMLCollection  
-4. remove(index): 移除给定位置的选项  
-5. selectedIndex: 基于0的选中项的索引，如果没有选中项，为-1.对于支持多选的控件，只保存选中项的第一个索引  
-6. size: 选择框中可见行数，等价于HTML中的size特性  
+选择框通过<select>和<option>元素创建。除了所有表单字段共有属性外，HTMLSelectElement类型还提供了下列属性和方法:    
+1. add(newOption, relOption): 向控件中插入新<option>元素，位置再relOption之前    
+2. multiply: 布尔型，表示是否允许多项选择；等价HTML的multiply特性    
+3. options: 控件中所有<option>元素的HTMLCollection    
+4. remove(index): 移除给定位置的选项    
+5. selectedIndex: 基于0的选中项的索引，如果没有选中项，为-1.对于支持多选的控件，只保存选中项的第一个索引    
+6. size: 选择框中可见行数，等价于HTML中的size特性    
