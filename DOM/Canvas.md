@@ -101,7 +101,7 @@ context.fillText("Hello world!", 10, 10);
 context.fillText("Font size is " + fontSize + "px", 10, 50);
 ```
 ###### 变换
-通过上下文的变换，可以把处理后的图像绘制到画布上。可以通过以下方法修改变换矩阵：  
+通过上下文的变换，可以把处理后的图像绘制到画布上。可以通过以下方法修改变换矩阵：    
 1. rotate(angle): 围绕远点旋转图像angle弧度    
 2. scale(scaleX, scaleY): 缩放图像，在x方向乘以scaleX，在y方向乘以scaleY。默认值都是1.0    
 3. translate(x, y): 将坐标原点移动到(x, y)。执行之后坐标(0, 0)会变成之前由(x, y)表示的点    
