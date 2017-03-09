@@ -81,4 +81,4 @@ context.stroke(); // 描边
 1. font: 表示文本样式、大小和字体，用CSS中指定字体格式来指定，如："10px Arial"  
 2. textAlign: 表示文本对齐方式，"start, end, left, right, center"，建议使用start和end，不要使用left和right  
 3. textBaseline: 表示文本的基线。"top, hanging, middle, alphabetic, ideographic, bottom"  
-这几个属性都有默认值，不需要重新设置一遍。`fillText()`方法使用fillStyle属性绘制文本。`strokeText()`使用strokeStyle属性为文本描边。相比之下，使用`fillText()`的时候更多，该方法模拟了在网页中正常显示文本。
+这几个属性都有默认值，不需要重新设置一遍。`fillText()`方法使用`fillStyle`属性绘制文本。`strokeText()`使用`strokeStyle`属性为文本描边。相比之下，使用`fillText()`的时候更多，该方法模拟了在网页中正常显示文本。
