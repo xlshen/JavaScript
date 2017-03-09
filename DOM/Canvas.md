@@ -167,4 +167,14 @@ context.fillStyle = "rgba(0, 0, 255, 1)";
 context.fillRect(30, 30, 50, 50);
 ```
 ###### 渐变
-渐变由CanvasGradient实例表示，很容易通过2D上下文创建和修改。要创建线性渐变，可以调用`createLinearGradient()`方法。该方法接收4个参数：起点x坐标，起点y坐标，终点x坐标，终点y坐标。调用后会创建一个指定大小的渐变，并返回CanvasGradient对象的实例。  
+渐变由CanvasGradient实例表示，很容易通过2D上下文创建和修改。要创建线性渐变，可以调用`createLinearGradient()`方法。该方法接收4个参数：起点x坐标，起点y坐标，终点x坐标，终点y坐标。调用后会创建一个指定大小的渐变，并返回CanvasGradient对象的实例。  
+创建了渐变对象后，下一步就是使用`addColorStop()`方法指定色标。接收两个参数：色标位置和CSS颜色值。色标位置是一个0(开始颜色)到1(结束颜色)之间的数字。
+```javascript
+var gradient = context.createLinearGradient(20, 30, 70, 70);
+gradient.addColorStop(0, "white");
+gradient.addColorStop(1, "black"); 
+context.fillStyle = "#f00";
+context.fillRect(10, 10, 50, 50);
+context.fillStyle = gradient;
+context.fillRect(30, 30, 50, 50);
+```
