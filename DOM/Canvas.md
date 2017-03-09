@@ -63,3 +63,15 @@ context.clearRect(40, 40, 10, 10);
 7. rect(x, y, width, height): 从点(x, y)开始绘制一个矩形，宽度和高度分别由width和height指定。这个方法绘制的是矩形路径，而不是strokeRect()和fillRect()所绘制的独立形状
 
 创建了路径后，接下来如果想绘制一条连接路径起点的线条，可以调用`closePath()`。如果路径已经完成，想用`fillStyle`填充它，可以调用`fill()`方法。另外，还可以调用`stoke()`方法对路径描边，描边使用的是`strokeStyle`。最后调用`clip()`，可以创建一个剪切区域。
+```javascript
+context.beginPath(); // 开始绘制
+context.arc(100, 100, 99, 0, 2*Math.PI, false); // 绘制外圆
+context.moveTo(194, 100);
+context.arc(100, 100, 94, 0, 2*Math.PI, false); // 绘制内圆
+context.moveTo(100, 100);
+context.lineTo(100, 15);
+context.moveTo(100, 100);
+context.lineTo(35, 100);
+context.closePath();
+context.stroke(); // 描边
+```
