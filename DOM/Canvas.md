@@ -166,3 +166,5 @@ context.fillRect(10, 10, 50, 50);
 context.fillStyle = "rgba(0, 0, 255, 1)";
 context.fillRect(30, 30, 50, 50);
 ```
+###### 渐变
+渐变由CanvasGradient实例表示，很容易通过2D上下文创建和修改。要创建线性渐变，可以调用`createLinearGradient()`方法。该方法接收4个参数：起点x坐标，起点y坐标，终点x坐标，终点y坐标。调用后会创建一个指定大小的渐变，并返回CanvasGradient对象的实例。  
