@@ -82,3 +82,9 @@ context.stroke(); // 描边
 2. textAlign: 表示文本对齐方式，"start, end, left, right, center"，建议使用start和end，不要使用left和right  
 3. textBaseline: 表示文本的基线。"top, hanging, middle, alphabetic, ideographic, bottom"  
 这几个属性都有默认值，不需要重新设置一遍。`fillText()`方法使用`fillStyle`属性绘制文本。`strokeText()`使用`strokeStyle`属性为文本描边。相比之下，使用`fillText()`的时候更多，该方法模拟了在网页中正常显示文本。
+```javascript
+context.font = "bold 14px Arial";
+context.textAlign = "center";
+context.textBaseline = "middle";
+context.fillText("12", 100, 20);
+```
