@@ -76,3 +76,9 @@ context.closePath();
 context.stroke(); // 描边
 ```
 `isPointInPath()`方法可以判断一个点是否在绘制的路径上
+###### 绘制文本  
+主要两个方法：fillText()和strokeText()。都接收四个参数：要绘制的文本字符串，x左边，y坐标和可选的最大像素宽度。而且这两个方法都以下列三个属性为基础：  
+1. font: 表示文本样式、大小和字体，用CSS中指定字体格式来指定，如："10px Arial"  
+2. textAlign: 表示文本对齐方式，"start, end, left, right, center"，建议使用start和end，不要使用left和right  
+3. textBaseline: 表示文本的基线。"top, hanging, middle, alphabetic, ideographic, bottom"  
+这几个属性都有默认值，不需要重新设置一遍。`fillText()`方法使用fillStyle属性绘制文本。`strokeText()`使用strokeStyle属性为文本描边。相比之下，使用`fillText()`的时候更多，该方法模拟了在网页中正常显示文本。
