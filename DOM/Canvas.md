@@ -116,11 +116,15 @@ context.arc(100, 100, 99, 0, 2*Math.PI, false);
 context.moveTo(194, 100);
 context.arc(100, 100, 94, 0, 2*Math.PI, false);
 context.translate(100, 100); // 变换原点
-context.rotate(1);
+context.rotate(1); // 上下文旋转1弧度
 context.moveTo(0, 0);
 context.lineTo(0, -85);
 context.moveTo(0, 0);
 context.lineTo(-65, 0);
 context.stroke();
-
+```
+无论是执行变换还是`fillStyle`，`strokeStyle`等属性，都会在当前上下文中一直有效，除非再做什么修改。虽然没有办法把上下文重置，但有两个方法可以追踪上下文状态变化。如果你知道将来还要返回某组属性与变换的组合，可以调用`save()`方法。调用这个方法后，当时的所有设置都会进入一个栈结构保存，然后可以对上下文进行修改，等想要回到之前保存的设置时，可以调用`restore()`方法，再保存设置的栈结构中往前返回一级，恢复之前状态。连续调用`save()`可以把更多设置保存到栈结构，之后连续调用`restore()`可以一级一级返回。  
+```javascript
+context.fillStyle = "#f00";
+context.save();
 ```
