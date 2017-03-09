@@ -61,3 +61,5 @@ context.clearRect(40, 40, 10, 10);
 5. moveTo(x, y): 将绘图游标移动到(x, y)，不画线  
 6. quadratiocCurveTo(cx, cy, x, y): 从上一点开始绘制一条二次曲线，到(x, y)为止，并且以(cx, cy)为控制点 // 二次贝塞尔曲线  
 7. rect(x, y, width, height): 从点(x, y)开始绘制一个矩形，宽度和高度分别由width和height指定。这个方法绘制的是矩形路径，而不是strokeRect()和fillRect()所绘制的独立形状
+
+创建了路径后，接下来如果想绘制一条连接路径起点的线条，可以调用`closePath()`。如果路劲哥已经完成，想用`fillStyle`填充它，可以调用`fill()`方法。另外，还可以调用`stoke()`方法对路径描边，描边使用的是`strokeStyle`。最后调用`clip()`，可以创建一个剪切区域。
