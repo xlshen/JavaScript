@@ -59,5 +59,5 @@ context.clearRect(40, 40, 10, 10);
 3. bezierCurveTo(c1x, c1y, c2x, c2y, x, y): 从上一点开始绘制一条曲线，到(x, y)为止，并且以(c1x, c1y)和(c2x, c2y)为控制点 //三次贝塞尔曲线  
 4. lineTo(x, y): 从上一点绘制一条直线，到(x, y)为止  
 5. moveTo(x, y): 将绘图游标移动到(x, y)，不画线  
-6. quadratiocCurveTo(cx, cy, x, y): 从上一点开始绘制一条二次曲线，到(x, y)为止，并且以(cx, cy)为控制点  
+6. quadratiocCurveTo(cx, cy, x, y): 从上一点开始绘制一条二次曲线，到(x, y)为止，并且以(cx, cy)为控制点 // 二次贝塞尔曲线  
 7. rect(x, y, width, height): 从点(x, y)开始绘制一个矩形，宽度和高度分别由width和height指定。这个方法绘制的是矩形路径，而不是strokeRect()和fillRect()所绘制的独立形状
