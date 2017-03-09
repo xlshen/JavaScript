@@ -150,3 +150,19 @@ context.drawImage(iamge, 50, 10, 20, 30); // 图像变为20*30像素
 context.drawImage(image, 0, 10, 50, 50, 0, 100, 40, 60); 
 ```
 除了给`drawImage()`方法传入HTML`<img>`元素外，还可以传入另一个`<canvas>`元素作为第一个参数。
+###### 阴影
+2D上下文会根据下面几个属性值，自动为形状或者路径绘制阴影:  
+1. shadowColor: 用CSS颜色格式表示阴影颜色，默认黑色  
+2. shadowOffsetX: 形状或路径x轴方向的阴影偏移量，默认0  
+3. shadowOffsetY: 形状或路径y轴方向的阴影偏移量，默认0  
+4. shodowBlur: 模糊的像素数，默认0，即不模糊  
+```javascript
+context.shadowOffsetX = 5;
+context.shadowOffsetY = 5;
+context.shadowBlur = 4;
+context.shadowColor = rgba(0, 0, 0, 0.5);
+context.fillStyle = "f00";
+context.fillRect(10, 10, 50, 50);
+context.fillStyle = "rgba(0, 0, 255, 1)";
+context.fillRect(30, 30, 50, 50);
+```
