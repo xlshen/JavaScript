@@ -105,7 +105,7 @@ context.fillText("Font size is " + fontSize + "px", 10, 50);
 1. rotate(angle): 围绕远点旋转图像angle弧度  
 2. scale(scaleX, scaleY): 缩放图像，在x方向乘以scaleX，在y方向乘以scaleY。默认值都是1.0  
 3. translate(x, y): 将坐标原点移动到(x, y)。执行之后坐标(0, 0)会变成之前由(x, y)表示的点  
-4. transform(m1_1, m1_2, m2_1, m2_2, dx, dy): 直接修改变化矩阵，方式乘以以下矩阵  
+4. transform(m1_1, m1_2, m2_1, m2_2, dx, dy): 直接修改变化矩阵，方式乘以以下矩阵:  
 m1_1    m2_2    dx  
 m2_1    m2_2    dy  
 0       0       1  
@@ -116,9 +116,11 @@ context.arc(100, 100, 99, 0, 2*Math.PI, false);
 context.moveTo(194, 100);
 context.arc(100, 100, 94, 0, 2*Math.PI, false);
 context.translate(100, 100); // 变换原点
+context.rotate(1);
 context.moveTo(0, 0);
 context.lineTo(0, -85);
 context.moveTo(0, 0);
 context.lineTo(-65, 0);
 context.stroke();
+
 ```
