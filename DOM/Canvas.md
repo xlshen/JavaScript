@@ -178,3 +178,13 @@ context.fillRect(10, 10, 50, 50);
 context.fillStyle = gradient;
 context.fillRect(30, 30, 50, 50);
 ```
+要创建径向渐变（或放射渐变），可以使用`createRadialGradient()`方法。该方法接收6个参数，对应两个圆的圆心和半径。前三个参数指定的是起点圆的圆心(x, y)及半径，后三个参数指定的是终点圆的圆心(x, y)及半径。  
+```javascript
+var gradient = context.createRadialGradient(55, 55, 10, 55, 55, 30);
+gradient.addColorStop(0, "white");
+gradient.addColorStop(1, "black");
+context.fillStyle = "#f00";
+context.fillRect(10, 10, 50, 50);
+context.fillStyle = gradient;
+context.fillRect(30, 30, 50, 50);
+```
