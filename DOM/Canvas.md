@@ -75,3 +75,4 @@ context.lineTo(35, 100);
 context.closePath();
 context.stroke(); // 描边
 ```
+`isPointInPath()`方法可以判断一个点是否在绘制的路径上
