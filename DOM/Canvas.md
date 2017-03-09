@@ -137,3 +137,9 @@ context.fillRect(10, 10, 100, 200); // 从(110, 110)开始绘制绿色矩形
 context.restore();
 context.fillRect(0, 0, 100, 200); // 从(0, 0)开始绘制红色矩形
 ```
+###### 绘制图像
+`drawImage()`方法可以把一幅图像绘制到画布上，可以使用三种不同的参数组合:  
+```javascript
+var image = document.images[0];
+context.drawImage(image, 10, 10); // 绘制图像的x和y坐标
+```
