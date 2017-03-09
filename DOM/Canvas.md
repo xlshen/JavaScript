@@ -90,3 +90,13 @@ context.fillText("12", 100, 20);
 ```
 由于绘制文本比较复杂，2D上下文提供了辅助确定文本大小的方法`measureText()`。该方法接收一个参数，要绘制的文本；返回一个TextMetrics对象。返回对象目前只有一个width属性。  
 measureText()方法利用font, textAlign和textBaseline的当前值计算文本大小。
+```javascript
+var fontSize = 100;
+context.font = fontSize + "px Arial";
+while(context.measureText("Hello world!").width > 140){
+ fontSize --;
+ context.font = fontSize + "px Arial";
+}
+context.fillText("Hello world!", 10, 10);
+context.fillText("Font size is " + fontSize + "px", 10, 50);
+```
