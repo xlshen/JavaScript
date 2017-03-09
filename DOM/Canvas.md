@@ -127,4 +127,13 @@ context.stroke();
 ```javascript
 context.fillStyle = "#f00";
 context.save();
+context.fillStyle = "#0f0";
+context.translate(100, 100);
+context.save();
+context.fillStyle = "#00f";
+context.fillRect(0, 0, 100, 200); // 从(100, 100)开始绘制蓝色矩形
+context.restore();
+context.fillRect(10, 10, 100, 200); // 从(110, 110)开始绘制绿色矩形
+context.restore();
+context.fillRect(0, 0, 100, 200); // 从(0, 0)开始绘制红色矩形
 ```
