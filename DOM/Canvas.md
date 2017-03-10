@@ -236,4 +236,16 @@ dirtyY 可选 在源图像数据中，矩形区域左上角的位置。默认是
 dirtyWidth 可选 在源图像数据中，矩形区域的宽度。默认是图像数据的宽度 如果设置大于默认宽度，无效果，取默认值   
 dirtyHeight 可选 在源图像数据中，矩形区域的高度。默认是图像数据的高度 如果设置大于默认宽度，无效果，取默认值   
 ###### 合成
-`globalAlpha`，`globalCompositionOperation`，其中globalAlpha介于0到1之间的值，包括0和1，用于绘制透明度，默认0。如果所有后续操作都要基于相同的透明度，就可以先把globalAlpha设置为适当的值，最后把它设置回默认值。
+`globalAlpha`，`globalCompositionOperation`  
+其中`globalAlpha`介于0到1之间的值，包括0和1，用于绘制透明度，默认0。如果所有后续操作都要基于相同的透明度，就可以先把`globalAlpha`设置为适当的值，最后把它设置回默认值。  
+```javascript
+context.fillStyle = "#f00";
+context.fillRect(10, 10, 50, 50);
+// 修改全局透明度
+context.globalAlpha = 0.5;
+// 绘制蓝色矩形
+context.fillStyle = "rgba(0, 0, 255, 1)";
+context.fillRect(30, 30, 50, 50);
+// 重置全局透明度
+context.globalAlpha = 0;
+```
