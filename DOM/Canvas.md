@@ -262,5 +262,6 @@ context.globalAlpha = 0;
 10. copy: 后绘制的图形完全替代与之重叠的先绘制的图形  
 11. xor: 后绘制的图形完全替代与先绘制图形重叠的部分执行“异或”操作  
 ```javascript
-
+// 设置合成操作
+context.globalCompositionOperation = "destination-over";
 ```
