@@ -211,4 +211,20 @@ var data = ImageData.data,
     green = data[1],
     blue = data[2],
     alpha = data[3];
+    // 每个数据都是介于0到255之间，包括透明度
+```
+能取得数据就能操作：
+```javascript
+for(var i = 0, len = data.length; i < len; i +=4){
+  red = data[i];
+  green = data[i+1];
+  blue = data[i+2];
+  alpha = data[i+3];
+  average = Math.floor((red + green + blue) / 3); // 求rgb平均值
+  data[i] = average; // 设置平均值
+  data[i+1] = average;
+  data[i+2] = average;
+}
+imageData.data = data;
+context.putImageData(imageData, 0, 0); // 把图像数据绘制到画布上
 ```
