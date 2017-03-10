@@ -236,7 +236,7 @@ dirtyY 可选 在源图像数据中，矩形区域左上角的位置。默认是
 dirtyWidth 可选 在源图像数据中，矩形区域的宽度。默认是图像数据的宽度 如果设置大于默认宽度，无效果，取默认值   
 dirtyHeight 可选 在源图像数据中，矩形区域的高度。默认是图像数据的高度 如果设置大于默认宽度，无效果，取默认值   
 ###### 合成
-`globalAlpha`，`globalCompositionOperation`  
+`globalAlpha`，`globalCompositeOperation`  
 其中`globalAlpha`介于0到1之间的值，包括0和1，用于绘制透明度，默认0。如果所有后续操作都要基于相同的透明度，就可以先把`globalAlpha`设置为适当的值，最后把它设置回默认值。  
 ```javascript
 context.fillStyle = "#f00";
@@ -249,7 +249,7 @@ context.fillRect(30, 30, 50, 50);
 // 重置全局透明度
 context.globalAlpha = 0;
 ```
-`globalCompositionOperation`表示后悔之的图像怎样与先绘制的图形结合。该属性值为字符串，可能为下：    
+`globalCompositeOperation`表示后悔之的图像怎样与先绘制的图形结合。该属性值为字符串，可能为下：    
 1. source-over(默认值): 后绘制的图形位于先绘制的图形上方    
 2. source-in: 后绘制的图形与先绘制的图形重叠部分可见，两者其他部分完全透明    
 3. source-out: 后绘制的图形与先绘制的图形不重叠的部分可见，先绘制的图形完全透明    
@@ -263,5 +263,5 @@ context.globalAlpha = 0;
 11. xor: 后绘制的图形完全替代与先绘制图形重叠的部分执行“异或”操作  
 ```javascript
 // 设置合成操作
-context.globalCompositionOperation = "destination-over";
+context.globalCompositeOperation = "destination-over";
 ```
