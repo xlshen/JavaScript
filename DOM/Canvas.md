@@ -188,3 +188,5 @@ context.fillRect(10, 10, 50, 50);
 context.fillStyle = gradient;
 context.fillRect(30, 30, 50, 50);
 ```
+###### 模式
+模式其实就是重复的图像，可以用来填充或描边图形。调用`createPattern()`方法并传入两个参数:
