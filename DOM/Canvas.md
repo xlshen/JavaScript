@@ -228,3 +228,10 @@ for(var i = 0, len = data.length; i < len; i +=4){
 imageData.data = data;
 context.putImageData(imageData, 0, 0); // 把图像数据绘制到画布上
 ```
+`putImageData(imageData, dx, dy, dirtyX, dirtyY, dirtyWidth, dirtyHeight)`
+> dx 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）  
+dy 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）  
+dirtyX 可选 在源图像数据中，矩形区域左上角的位置。默认是整个图像数据的左上角（x 坐标）  
+dirtyY 可选 在源图像数据中，矩形区域左上角的位置。默认是整个图像数据的左上角（y 坐标）  
+dirtyWidth 可选 在源图像数据中，矩形区域的宽度。默认是图像数据的宽度  
+dirtyHeight 可选 在源图像数据中，矩形区域的高度。默认是图像数据的高度  
