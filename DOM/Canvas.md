@@ -199,3 +199,16 @@ var image = document.images[0],
 ```
 需要注意：【`模式`和`渐变`一样，都是从画布的原点(0, 0)开始的，将填充样式(fillStyle)设置为模式对象，只表示在某个特定区域内显示重复的图像，而不是要从某个位置开始绘制重复的图像】    
 `createPattern()`方法的第一个参数也可以是一个`<video>`元素或者另一个`<canvas>`元素  
+###### 使用数据图像
+2D上下文可以通过`getImageData()`方法取得原始图像数据。该方法接收4个参数：要取得数据的x和y左边以及该区域的像素宽度和高度。如取得左上角坐标为(10, 5)、大小为50 * 50像素的区域图像数据：
+```javascript
+var imageData = context.getImageData(10, 5, 50, 50); // 返回ImageData实例，有width, height, data属性
+```
+该方法返回`ImageData`的实例，包含三个属性：`width`, `height`, `data`，其中`data`属性是一个数组，保存着图像中每一个像素的数据。`data`数组中，每个像素用4个元素来保存，分别为`红`，`绿`，`蓝`和`透明度`。因此，第一个像素的数据就保存在数据的第0到3个元素中：
+```javascript
+var data = ImageData.data,
+    red = data[0],
+    green = data[1],
+    blue = data[2],
+    alpha = data[3];
+```
