@@ -189,4 +189,11 @@ context.fillStyle = gradient;
 context.fillRect(30, 30, 50, 50);
 ```
 ###### 模式
-模式其实就是重复的图像，可以用来填充或描边图形。调用`createPattern()`方法并传入两个参数:
+模式其实就是重复的图像，可以用来填充或描边图形。调用`createPattern()`方法并传入两个参数:一个HTML`<img>`元素和一个表示如果重复图像的字符串。第二个参数与CSS的background-repeat属性值相同，包括: "repeat","repeat-x","repeat-y","no-repeat"  
+```javascript
+var image = document.images[0],
+    pattern = context.createPattern(image, "repeat");
+    // 绘制矩形
+    context.fillStyle = pattern;
+    context.fillRect(10, 10, 150, 150);
+```
