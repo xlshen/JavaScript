@@ -249,7 +249,7 @@ context.fillRect(30, 30, 50, 50);
 // 重置全局透明度
 context.globalAlpha = 0;
 ```
-`globalCompositionOperation`表示后悔之的图像怎样与先绘制的图形结合。该属性值为字符串，可能为下：  
+`globalCompositionOperation`表示后悔之的图像怎样与先绘制的图形结合。该属性值为字符串，可能为下：    
 1. source-over(默认值): 后绘制的图形位于先绘制的图形上方    
 2. source-in: 后绘制的图形与先绘制的图形重叠部分可见，两者其他部分完全透明    
 3. source-out: 后绘制的图形与先绘制的图形不重叠的部分可见，先绘制的图形完全透明    
