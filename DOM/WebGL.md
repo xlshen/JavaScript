@@ -44,3 +44,12 @@ getFloat32(byteOffset, littleEndian) setFloat32(byteOffset, value, littleEndian)
 getFloat64(byteOffset, littleEndian) setFloat64(byteOffset, value, littleEndian)
 // 64位浮点数
 ```
+所有的这些方法第一个参数都是一个字节偏移量，表示从哪个字节开始读取或者写入。记住，保存这些数据类型的数据，可能需要的不止1B。比如，无符号8位整数要用1B，而32位浮点数则用4B。使用DataView，就需要自己来管理这些细节，要明确知道自己的数据需要多少字节，并选择正确的读写方法。如：
+```javascript
+var buffer = new ArrayBuffer(20),
+    view = new DataView(buffer),
+    value;
+view.setUint16(0, 25);
+view.setUint16(0, 50); // 不能从第一个字节开始，因为16位整数要用2B
+value = view.getUint16(0);
+```
