@@ -108,3 +108,9 @@ for(var i = 0, len = int8s.length; i < len; i++){
     console.log("Position " + i + " is " + int8s[i]);
 }
 ```
+可以使用方括号语法为类型化视图的元素赋值。如果为相应元素制定的字节数不足，则实际保存的值为最大值的模。如无符号16位整数所能表示最大数值为65535，如果保存了65536，则实际上保存了0；如果保存了65537，那实际保存了1。
+```javascript
+var uint16s = new Uint16Array(10);
+uint16s[0] = 65537;
+console.log(uint16s[0]);
+```
