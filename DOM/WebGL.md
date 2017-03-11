@@ -114,3 +114,8 @@ var uint16s = new Uint16Array(10);
 uint16s[0] = 65537;
 console.log(uint16s[0]);
 ```
+类型化数组还有个方法：`subarray()`,使用这个方法可以基于底层数组缓冲器的子集创建一个新视图。该方法接收两个参数：开始元素的索引和可选的结束元素的索引。返回的类型与调用该方法的视图类型相同。如：
+```javascript
+var uint16s = new Uint16Array(10),
+    sub = uint16s.subarray(2, 5);
+```
