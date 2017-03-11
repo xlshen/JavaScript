@@ -72,4 +72,39 @@ Uint32Array: 32位无符号整数
 Float32Array: 32位IEEE浮点数
 Float64Array: 64位IEEE浮点数
 ```
-由于这些视图都继承
+由于这些视图都继承自`DataView`，因而可以使用相同的构造函数参数实例化。  
+第一个参数要使用`ArrayBuffer`对象，第二个参数是作为起点的字节偏移量（默认0），第三个参数是要包含的字节数。三个参数只有第一个是必须的。
+```javascript
+// 创建一个新数组，使用整个缓冲器
+var int8s = new Int8Array(buffer);
+// 只使用从字节9开始的缓冲器
+var int16s = new Int16Array(buffer, 9);
+// 只使用从字节9到字节18的缓冲器
+var uint16s = new Uint16Array(buffer, 9, 10);
+```
+能够制定缓冲器中可用的字节段，意味着能在同一个缓冲器中保存不同类型的数值，如：
+```javascript
+// 使用缓冲器的一部分保存8位整数，而在其他字节中保存16位整数
+var int8s = new int8Array(buffer, 0, 10);
+var uint16s = new int16Array(buffer, 11, 10);
+```
+每个视图构造函数都有一个名为`BYTE_PER_ELEMENT`的属性，表示类型化数组的每个元素需要多少字节。因此，`Uint8Array.BYTE_PER_ELEMENT`就是1，而`Float32Array.BYTE_PER_ELEMENT`为4。可以利用这个属性来辅助初始化。
+```javascript
+// 需要10个元素空间
+var int8s = new Int8Array(buffer, 0, 10 * Int8Array.BYTE_PER_ELEMENT);
+// 需要5个元素空间
+var uint16s = new Uint16Array(buffer, int8s.byteOffset + int8s.byteLength, 5 * Uint16Array.BYTE_PER_ELEMENT);
+```
+除了这些优点之外，创建类型化视图还可以不用首先创建`ArrayBuffer`对象。只要传入希望数组保存的元素数，相应的构造函数就可以自动创建一个包含足够字节数的`ArrayBuffer`对象。如：
+```javascript
+// 创建一个数组保存10个8位整数（10字节）
+var int8s = new Int8Array(10);
+// 创建一个数组保存10个16位整数（20字节）
+var int16s = new Int16Array(10);
+// 把常规数组转化为类型化视图，只要把常规数组传入类型化视图的构造函数中：
+// 创建一个数组保存5个8位整数（10字节）
+var int8s = new Int8Array([10, 20, 30, 40, 50]);
+for(var i = 0, len = int8s.length; i < len; i++){
+    console.log("Position " + i + " is " + int8s[i]);
+}
+```
