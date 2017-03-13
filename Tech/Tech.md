@@ -16,13 +16,13 @@ memory = options === 'XXX' && data; // 全等于memory = (options === 'XXX') && 
 [详见`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
 #### 事件代理
 ```javascript
-var sth = function(element){
-  this.name = element;
+var Sth = function(element){
+  this.name = "Sth good.";
   this.handleEvent = function(_event){
       // 此处可以使用event对象
       console.log(this.name);
   }
-  event.addEventListerner("change", this, false); // this指代的为调用对象
+  element.addEventListerner("change", this, false); // this指代的为调用对象
 }
-var s = new sth(kktext);
+var s = new Sth(kktext);
 ```
