@@ -19,7 +19,8 @@ memory = options === 'XXX' && data; // 全等于memory = (options === 'XXX') && 
 var sth = function(element){
   this.name = element;
   this.handleEvent = function(_event){
-      console.log(this.name);
+      // 此处可以使用event对象
+      console.log(this.name);
   }
   event.addEventListerner("change", this, false); // this指代的为调用对象
 }
