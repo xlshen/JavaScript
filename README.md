@@ -13,6 +13,7 @@
 + [`触摸事件`](https://github.com/xlshen/JavaScript/blob/master/DOM/Event/touchEvent.md "触摸事件")
 + [`Canvas`](https://github.com/xlshen/JavaScript/blob/master/DOM/Canvas.md "Canvas")
 + [`WebGL`](https://github.com/xlshen/JavaScript/blob/master/DOM/WebGL.md "WebGL")
++ [`HTML5`](https://github.com/xlshen/JavaScript/blob/master/DOM/HTML5.md "HTML5")
 + [`小技巧系列`](https://github.com/xlshen/JavaScript/blob/master/Tech/Tech.md "小技巧系列")
 
 ### 文章乱弹系列
