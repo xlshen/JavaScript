@@ -37,3 +37,4 @@ Event.addHandle(dragtarget, "drop", function(event){
 event.dataTransfer.setData("text", "Sth");
 var text = event.dataTransfer.getData("text");
 ```
+保存的`tranTransfer`对象只有在`drop`时间处理程序中读取，如果`drop`事件也没有取到，说明`dataTransfer`对象已经被销毁，数据丢失
