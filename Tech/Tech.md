@@ -14,3 +14,14 @@ memory = options === 'XXX' && data; // 全等于memory = (options === 'XXX') && 
 //注：该表达式存储memory的值，如果options为XXX，则memory为data，否则为data的值
 ```
 [详见`&& VS ||`](https://github.com/xlshen/JavaScript/issues/6 "&& VS ||")
+#### 事件代理
+```javascript
+var sth = function(element){
+  this.name = element;
+  this.handleEvent = function(event){
+      console.log(this.name);
+  }
+  event.addEventListerner("change", this, false); // this指代的为调用对象
+}
+var s = new sth(kktext);
+```
