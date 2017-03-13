@@ -12,3 +12,18 @@
 3. dragleave或drop
 
 只要元素被拖动到目标上时就会触发dragenter事件，然后dragover事件，在目标元素上移动时持续触发。当元素拖出目标外就会触发dragleave事件。如果元素被放置到目标中，触发drop事件而不是dragleave事件。上述事件都是在目标元素上触发。
+##### 自定义放置目标
+虽然所有元素都支持放置目标事件，但这些元素默认是不允许放置的。但我们可以把任何元素变成可放置的目标，方法为重写dragenter和dragover事件的默认行为：
+```javascript
+var dropstart = document.getElementById("droptarget");
+Event.addHandle(dragtarget, "dragover", function(event){
+  Event.preventDefault(event);
+});
+Event.addHandle(dragtarget, "dragenter", function(event){
+  Event.preventDefault(event);
+});
+// 兼容FF3.5+，也要取消drop默认行为
+Event.addHandle(dragtarget, "drop", function(event){
+  Event.preventDefault(event);
+});
+```
