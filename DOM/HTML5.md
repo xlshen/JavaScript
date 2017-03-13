@@ -31,3 +31,6 @@ Event.addHandle(dragtarget, "drop", function(event){
 事件对象的属性，用于从被拖动的元素向放置目标传递字符串格式的数据，只能在拖动事件处理程序中访问该属性。
 >1. getData(kk)
 2. setData(kk, value) // kk是一个字符串，取值“text”或“URL”
+```javascript
+
+```
