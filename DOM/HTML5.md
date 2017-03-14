@@ -97,7 +97,7 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
       curtime = document.getElementById("curtime"),
       duration = document.getElementById("duration");
   // 更新播放时间
-  duration.innerHTML = player.duration;
+  duration.innerHTML = player.duration; // 加到load事件里面，如果视频没加载，此值无法获取
   Event.addHandle(btn, "click", function(event){
     if(player.paused){
       player.play();
