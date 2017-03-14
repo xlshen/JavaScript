@@ -67,3 +67,9 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
 ```
 ####媒体元素
 `<audio>`与`<video>`
+```html
+<video src="" controls=true autoplay width="100%" height="200">
+  <source src="">
+  不支持HTML5播放器
+</video>
+```
