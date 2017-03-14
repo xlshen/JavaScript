@@ -65,7 +65,7 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
 ```html
 <img src="default.png" draggable="false" alt="default"/>
 ```
-####媒体元素
+#### 媒体元素
 `<audio>`与`<video>`
 ```html
 <video src="" controls=true autoplay width="100%" height="200" poster="img.png">
@@ -76,4 +76,39 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
   <source src="">
   不支持HTML5播放器
 </audio>
+```
+##### 自定义媒体播放器
+使用`<audio>`和`<video>`元素的`play()`和`pause()`方法，可以手动控制播放媒体文件。组合使用属性，事件和这两个方法，可以很容易创建一个自定义的媒体播放器。
+```html
+<div class="mediaplayer">
+  <div class="video">
+    <video id="player" src="movie.mov" poster="img.png" width="200" height="200"> 
+      不支持
+    </video>
+  </div>
+  <div class="controls">
+    <input type="button" value="Play" id="video-btn">
+    <span id="curtime">0</span>/<span id="duration">0</span>
+  </div>
+</div>
+<script>
+  var player = document.getElementById("player"),
+      btn = document.getElementById("video-btn"),
+      curtime = document.getElementById("curtime"),
+      duration = document.getElementById("duration");
+  // 更新播放时间
+  duration.innerHTML = player.duration;
+  Event.addHandle(btn, "click", function(event){
+    if(player.paused){
+      player.play();
+      btn.value = "Pause";
+    }else{
+      player.pause();
+      btn.value = "Play";
+    }
+  });
+  setInterval(function(){
+    curtime.innerHTML = player.currentTime;
+  },200);
+</script>
 ```
