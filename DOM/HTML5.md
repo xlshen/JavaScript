@@ -59,3 +59,9 @@ dropEffect属性只有配合effectAllowed属性才有用。effectAllowed属性�
 9. all: 允许任意的dropEffect
 
 `要使用effectAllowed属性，必须在ondragstart事件处理程序中设置`
+##### 可拖动
+默认，`图像`、`链接`和`文本`是可拖动的。
+HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像和链接自动设置为true，其他默认false
+```html
+<img src="default.png" draggable="false" alt="default"/>
+```
