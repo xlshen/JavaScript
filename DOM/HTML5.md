@@ -45,3 +45,15 @@ var text = event.dataTransfer.getData("text");
 2. move: 应该把拖放元素移动到放置目标
 3. copy: 应该把拖放元素复制到放置目标
 4. link: 防止目标会打开拖放的元素(拖动元素必须是一个链接)
+
+dropEffect属性只有配合effectAllowed属性才有用。effectAllowed属性表示允许拖动元素的哪种dropEffect，值如下：
+> 1. uninitialized: 没有给拖动元素设置任何放置行为
+2. none: 被拖动的元素不能有任何行为
+3. copy: 只允许值为"copy"的dropEffect
+4. link: 只允许值为"link"的dropEffect
+5. move: 只允许值为"move"的dropEffect
+6. copyLink: 允许值为"copy"和"link"的dropEffect
+7. copyMove: 允许值为"copy"和"move"的dropEffect
+8. linkMove: 允许值为"link"和"move"的dropEffect
+9. all: 允许任意的dropEffect
+
