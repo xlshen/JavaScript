@@ -38,3 +38,10 @@ event.dataTransfer.setData("text", "Sth");
 var text = event.dataTransfer.getData("text");
 ```
 保存的`tranTransfer`对象只有在`drop`时间处理程序中读取，如果`drop`事件也没有取到，说明`dataTransfer`对象已经被销毁，数据丢失
+##### dropEffect和effectAllowed
+通过`dataTransfer`对象的`dropEffect`和`effectAllowed`属性可以确定被拖元素和作为放置目标元素能够接收什么操作
+`dropEffect`: 确定被拖放元素能执行哪些放置行为
+> 1. none: 不能把拖放元素放到这。除了文本框之外所有元素的默认值
+2. move: 应该把拖放元素移动到放置目标
+3. copy: 应该把拖放元素复制到放置目标
+4. link: 防止目标会打开拖放的元素(拖动元素必须是一个链接)
