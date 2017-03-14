@@ -65,3 +65,5 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
 ```html
 <img src="default.png" draggable="false" alt="default"/>
 ```
+####媒体元素
+`<audio>`与`<video>`
