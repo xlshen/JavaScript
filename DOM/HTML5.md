@@ -30,7 +30,7 @@ Event.addHandle(dragtarget, "drop", function(event){
 ##### dataTransfer对象
 事件对象的属性，用于从被拖动的元素向放置目标传递字符串格式的数据，只能在拖动事件处理程序中访问该属性。
 >1. getData(kk)
-2. setData(kk, value) // kk是一个字符串，取值“text”等各种MIME值
+> 2. setData(kk, value) // kk是一个字符串，取值“text”等各种MIME值
 
 ```javascript
 // 设置和接收文本
