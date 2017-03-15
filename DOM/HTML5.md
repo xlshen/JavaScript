@@ -65,6 +65,65 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
 ```html
 <img src="default.png" draggable="false" alt="default"/>
 ```
+`[用拖拽实现不完美拖动弹框]`
+```html
+<style>
+    #mask{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .4);
+    }
+    #dragTest{
+        position: fixed;
+        width: 300px;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        transform:translate(-50%,-50%);
+        background-color: #fff;
+    }
+    header{
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        cursor: move;
+        color: #666;
+        border-bottom: 1px solid #ddd;
+        line-height: 2;
+    }
+    .dragContent{
+        text-align: center;
+    }
+</style>
+<div id="mask"></div>
+<div id="dragTest" draggable="true">
+    <header>测试头</header>
+    <div class="dragContent">
+        <h3>drag测试案例</h3>
+    </div>
+</div>
+<script>
+    var leftNum, topNum;
+    document.getElementById("dragTest").addEventListener("dragstart", function(event){
+        // 需要增加document的dragover事件，否则无法准确获取clientX和clientY属性
+        document.addEventListener("dragover", function(event){ 
+            topNum = event.clientY;
+            leftNum = event.clientX;
+            console.log(event.clientX, event.clientY);
+        }, false);
+    }, false);
+    document.getElementById("dragTest").addEventListener("drag", function(event){
+        document.getElementById("dragTest").style.top = topNum + "px";
+        document.getElementById("dragTest").style.left = leftNum + "px";
+    }, false);
+</script>
+```
 #### 媒体元素
 `<audio>`与`<video>`
 ```html
