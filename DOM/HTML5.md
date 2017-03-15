@@ -2,14 +2,14 @@
 ##### 拖放事件
 有些事件在拖放元素上触发，有些事件是在放置目标上触发。
 > 1. dragstart
-2. drag
-3. dragend
+> 2. drag
+> 3. dragend
 
 按下鼠标拖动触发`dragstart`事件，通过`ondragstart`事件处理，触发dragstart后，即会触发`drag`事件，而且在拖动过程中会持续触发。该事件和`mouseover`事件类似，停止拖动触发`dragend`事件。  
 当某个元素被拖动到一个有效的目标上，会触发：
 > 1. dragenter
-2. dragover
-3. dragleave或drop
+> 2. dragover
+> 3. dragleave或drop
 
 只要元素被拖动到目标上时就会触发dragenter事件，然后dragover事件，在目标元素上移动时持续触发。当元素拖出目标外就会触发dragleave事件。如果元素被放置到目标中，触发drop事件而不是dragleave事件。上述事件都是在目标元素上触发。
 ##### 自定义放置目标
