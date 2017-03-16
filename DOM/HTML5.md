@@ -180,5 +180,6 @@ Event.addHandle(audio, "canplaythrough", function(){
 });
 ```
 ##### 历史状态管理
-> HTML5新增了pushState()和replaceState()方法管理历史记录  
-pushState接收三个参数：状态对象、新状态标题和相对URL
+> HTML5新增了pushState()和replaceState()方法管理历史记录  
+1. pushState接收三个参数：状态对象、新状态标题和相对URL  
+2. replaceState接收两个参数：状态对象，新状态标题  
