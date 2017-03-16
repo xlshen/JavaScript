@@ -190,7 +190,7 @@ history.pushState({
 }, "page", "/index.html");
 ```
 执行`pushState()`方法后，新状态被压入状态栈，浏览器地址栏改为新设置的地址，但不会去请求服务器。第二个参数现无浏览器实现，可以传空字符串。  
-`pushState()`方法创建了新历史状态，浏览器会出现“后退”操作，点击后退，触发`popstate`事件，该事件有个`state`属性，该属性保存着`pushState()`方法传入的第一个参数对象。
+`pushState()`方法创建了新历史状态，浏览器会出现“后退”操作，点击后退或者JavaScript执行后退操作，触发`popstate`事件，该事件有个`state`属性，该属性保存着`pushState()`方法传入的第一个参数对象。
 ```javascript
 Event.addHandle(window, "popstate", function(event){
   var state = event.state;
@@ -198,4 +198,16 @@ Event.addHandle(window, "popstate", function(event){
     // 
   }
 });
+```
+执行`replaceState()`方法会直接替换掉当前URL，但是不会在历史栈中创建新状态
+```javascript
+window.onpopstate = function(event) {
+  alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+history.pushState({page: 1}, "title 1", "?page=1");
+history.pushState({page: 2}, "title 2", "?page=2");
+history.replaceState({page: 3}, "title 3", "?page=3");
+history.back(); // alerts "location: http://example.com/example.html?page=1, state: {"page":1}"
+history.back(); // alerts "location: http://example.com/example.html, state: null
+history.go(2);  // alerts "location: http://example.com/example.html?page=3, state: {"page":3}
 ```
