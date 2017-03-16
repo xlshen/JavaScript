@@ -204,10 +204,10 @@ Event.addHandle(window, "popstate", function(event){
 window.onpopstate = function(event) {
   alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
 };
-history.pushState({page: 1}, "title 1", "?page=1");
-history.pushState({page: 2}, "title 2", "?page=2");
-history.replaceState({page: 3}, "title 3", "?page=3");
-history.back(); // alerts "location: http://example.com/example.html?page=1, state: {"page":1}"
-history.back(); // alerts "location: http://example.com/example.html, state: null
-history.go(2);  // alerts "location: http://example.com/example.html?page=3, state: {"page":3}
+history.pushState({page: 1}, "title 1", "?page=1"); // 压入历史栈，替换URL
+history.pushState({page: 2}, "title 2", "?page=2"); // 压入历史栈，替换URL
+history.replaceState({page: 3}, "title 3", "?page=3"); // 替换URL，不压历史栈，这个操作相当于把上一操作pushState操作抹掉了
+history.back(); // alerts "location: http://example.com/example.html?page=1, state: {"page":1}" // 因为replaceState原因，历史栈上一状态为第一次操作内容
+history.back(); // alerts "location: http://example.com/example.html, state: null // 回到最初状态，所以state为null
+history.go(2);  // alerts "location: http://example.com/example.html?page=3, state: {"page":3} // 回到replaceState操作时状态
 ```
