@@ -171,4 +171,12 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
   },200);
 </script>
 ```
-##### 检查编码器的支持情况
+##### Audio类型
+`<Audio>`元素还有一个原生的JavaScript构造函数Audio，可以在任何时候播放音频。从DOM角度看，Audio和Image很相似，但Audio不必像Image那样必须插入到文档中，只要创建一个新实例，并传入音频文件即可。
+```javascript
+var audio = new Audio("player.mp3");
+Event.addHandle(audio, "canplaythrough", function(){
+  audio.play();
+});
+audio.
+```
