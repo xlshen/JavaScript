@@ -180,7 +180,7 @@ Event.addHandle(audio, "canplaythrough", function(){
 });
 ```
 ##### 历史状态管理
-> HTML5新增了pushState()和replaceState()方法管理历史记录  
+> HTML5新增了`pushState()`和`replaceState()`方法管理历史记录  
 1. `pushState`接收三个参数：状态对象、新状态标题和相对URL  
 2. `replaceState`接收两个参数：状态对象，新状态标题  
 ```javascript
@@ -189,8 +189,8 @@ history.pushState({
   "second": 2
 }, "page", "/index.html");
 ```
-执行pushState()方法后，新状态被压入状态栈，浏览器地址栏改为新设置的地址，但不会去请求服务器。第二个参数现无浏览器实现，可以传空字符串。  
-pushState()方法创建了新历史状态，浏览器会出现“后退”操作，点击后退，触发`popstate`事件，该事件有个state属性，该属性保存着pushState()方法传入的第一个参数对象。
+执行`pushState()`方法后，新状态被压入状态栈，浏览器地址栏改为新设置的地址，但不会去请求服务器。第二个参数现无浏览器实现，可以传空字符串。  
+`pushState()`方法创建了新历史状态，浏览器会出现“后退”操作，点击后退，触发`popstate`事件，该事件有个`state`属性，该属性保存着`pushState()`方法传入的第一个参数对象。
 ```javascript
 Event.addHandle(window, "popstate", function(event){
   var state = event.state;
