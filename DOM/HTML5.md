@@ -178,5 +178,4 @@ var audio = new Audio("player.mp3");
 Event.addHandle(audio, "canplaythrough", function(){
   audio.play();
 });
-audio.
 ```
