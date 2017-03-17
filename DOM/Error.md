@@ -16,6 +16,14 @@ try{
 }catch(error){
   return 1;
 }finally{
-  return 2;
+  return 2; // 最终返回2
 }
 ```
+##### 错误类型
+1. Error: 基类  
+2. EvalError: 如果没有把eval()当作函数调用  
+3. RangeError: 数值超出相应范围  
+4. ReferenceError: 找不到对象   
+5. SyntaxError: 语法错误  
+6. TypeError: 执行某种操作时，变量类型不符合要求     
+7. URIError: 使用encodeURI和decodeURI时，传递URI格式不正确   
