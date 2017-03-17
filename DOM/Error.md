@@ -73,8 +73,8 @@ var image = new Image();
 Event.addHandle(window, "load", function(){
   alert("Image loaded!");
 });
-window.onerror = function(message, url, line){
+Event.addHandle(image, "error", function(){
   alert("Image error!");
-}
+});
 image.src = "default.gif"; // 不存在的图片
 ```
