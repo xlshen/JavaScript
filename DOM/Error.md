@@ -40,3 +40,11 @@ try{
   }
 }
 ```
+##### 抛出错误
+throw用于抛出错误，抛出错误时，必须给throw抛出一个值。
+```javascript
+throw 1;
+throw true;
+throw "2";
+throw {"name": "xlshen"}
+```
