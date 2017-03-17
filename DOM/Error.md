@@ -27,3 +27,16 @@ try{
 5. SyntaxError: 语法错误  
 6. TypeError: 执行某种操作时，变量类型不符合要求     
 7. URIError: 使用encodeURI和decodeURI时，传递URI格式不正确   
+```javascript
+try{
+ new Error("some");
+}catch(e){
+  if(e instanceof TypeError){
+    // 
+  }else if(e instanceof RangeError){
+    //
+  }else{
+    // 其他
+  }
+}
+```
