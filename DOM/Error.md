@@ -78,3 +78,18 @@ Event.addHandle(image, "error", function(){
 });
 image.src = "default.gif"; // 不存在的图片
 ```
+##### 把错误记录到服务器
+实现方案：
+```javascript
+function logError(sev, msg){
+  var img = new Image(); 
+  img.src = "index.html?sev=" + encodeURIComponent(sev) + "&msg=" + encodeURIComponnet(msg); // 服务器页面地址
+}
+// 记录日志
+try{
+   throw new Error("Sth");
+}catch(ex){
+  logError("non", "Module is failed" + ex.message);
+}
+```
+通过image对象发送请求避免跨域限制、所有浏览器支持Image对象
