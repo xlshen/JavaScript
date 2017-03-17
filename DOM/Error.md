@@ -29,7 +29,7 @@ try{
 7. URIError: 使用encodeURI和decodeURI时，传递URI格式不正确   
 ```javascript
 try{
- new Error("some");
+  throw new TypeError("some");
 }catch(e){
   if(e instanceof TypeError){
     // 
