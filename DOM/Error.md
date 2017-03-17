@@ -48,3 +48,13 @@ throw true;
 throw "2";
 throw {"name": "xlshen"}
 ```
+##### 创建自定义错误类型
+常用的Error, TypeError, RangeError, ReferenceError类型
+```javascript
+function NewError(message){
+  this.name = "newError";
+  this.message = message;
+}
+NewError.prototype = new Error();
+throw new NewError("Self Error");
+```
