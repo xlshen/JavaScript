@@ -58,3 +58,23 @@ function NewError(message){
 NewError.prototype = new Error();
 throw new NewError("Self Error");
 ```
+##### 错误事件
+任何没有通过try-catch处理的错误都会触发window的error事件。error事件不会创建event对象，它包含三个参数：错误消息、错误所在URL和行号。  
+要指定error事件必须按照DOM0级事件处理，DOM2级不支持
+```javascript
+window.onerror = function(message, url, line){
+  // message
+  return false; // 阻止浏览器默认行为，不会返回错误信息
+}
+```
+src为错误地址或者图像不能识别，像也会触发error事件
+```javascript
+var image = new Image();
+Event.addHandle(window, "load", function(){
+  alert("Image loaded!");
+});
+window.onerror = function(message, url, line){
+  alert("Image error!");
+}
+image.src = "default.gif"; // 不存在的图片
+```
