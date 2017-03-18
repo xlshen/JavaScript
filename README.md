@@ -3,7 +3,7 @@
 ***
 ### 知识点乱弹系列  
 + [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node.md "Node")  
-+ [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document.md "Node")  
++ [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document.md "Document")  
 + [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element.md "Element")  
 + [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr.md "Attr")
 + [`iterator`](https://github.com/xlshen/JavaScript/blob/master/DOM/iterator.md "iterator")
