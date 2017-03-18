@@ -46,3 +46,13 @@ var jsonText = JSON.stringify(book, function(key, value){
 });
 // "{"title":"JavaScript","edition":1,"year":2010}"
 ```
+2. 字符串缩进  
+JSON.stringify()第三个参数控制结果中字符串缩进和空白符。如果该参数是一个数值，则表示缩进的字符数，如果非数值，则这个字符用作缩进字符（不再使用空格）
+```javascript
+var jsonText = JSON.stringify(book, null, 4);
+// "{
+    "title": "Professional JS",
+    "edition": 3,
+    "year": 2010
+   }"
+```
