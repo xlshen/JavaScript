@@ -2,19 +2,20 @@
     ((支持请star,表fork) && (支持请star,表fork) && (支持请star,表fork)){3}
 ***
 ### 知识点乱弹系列  
-+ [`Node`](https://github.com/xlshen/JavaScript/blob/master/DOM/Node.md "Node")  
-+ [`Document`](https://github.com/xlshen/JavaScript/blob/master/DOM/Document.md "Node")  
-+ [`Element`](https://github.com/xlshen/JavaScript/blob/master/DOM/Element.md "Element")  
-+ [`Attr`](https://github.com/xlshen/JavaScript/blob/master/DOM/Attr.md "Attr")
-+ [`iterator`](https://github.com/xlshen/JavaScript/blob/master/DOM/iterator.md "iterator")
-+ [`form`](https://github.com/xlshen/JavaScript/blob/master/DOM/form.md "form")
++ [`Node`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Node.md "Node")  
++ [`Document`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Document.md "Node")  
++ [`Element`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Element.md "Element")  
++ [`Attr`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Attr.md "Attr")
++ [`iterator`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/iterator.md "iterator")
++ [`form`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/form.md "form")
 + [`元素大小`](https://github.com/xlshen/JavaScript/blob/master/Tech/offset.md "offset")
-+ [`事件`](https://github.com/xlshen/JavaScript/blob/master/DOM/Event/event.md "事件")
-+ [`触摸事件`](https://github.com/xlshen/JavaScript/blob/master/DOM/Event/touchEvent.md "触摸事件")
-+ [`Canvas`](https://github.com/xlshen/JavaScript/blob/master/DOM/Canvas.md "Canvas")
-+ [`WebGL`](https://github.com/xlshen/JavaScript/blob/master/DOM/WebGL.md "WebGL")
-+ [`HTML5`](https://github.com/xlshen/JavaScript/blob/master/DOM/HTML5.md "HTML5")
-+ [`Error`](https://github.com/xlshen/JavaScript/blob/master/DOM/Error.md "Error")
++ [`事件`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Event/event.md "事件")
++ [`触摸事件`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Event/touchEvent.md "触摸事件")
++ [`Canvas`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Canvas.md "Canvas")
++ [`WebGL`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/WebGL.md "WebGL")
++ [`HTML5`](https://github.com/xlshen/JavaScript/blob/master/v/HTML5.md "HTML5")
++ [`JSON`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/JSON.md "JSON")
++ [`Error`](https://github.com/xlshen/JavaScript/blob/master/JavaScript/Error.md "Error")
 + [`小技巧系列`](https://github.com/xlshen/JavaScript/blob/master/Tech/Tech.md "小技巧系列")
 
 ### 文章乱弹系列
