@@ -51,8 +51,14 @@ JSON.stringify()第三个参数控制结果中字符串缩进和空白符。如�
 ```javascript
 var jsonText = JSON.stringify(book, null, 4);
 // "{
-    "title": "Professional JS",
-    "edition": 3,
-    "year": 2010
-   }"
+//    "title": "Professional JS",
+//    "edition": 3,
+//    "year": 2010
+//  }"
+var jsonText = JSON.stringify(book, null, "- -");
+// "{
+// - -"title": "Professional JS",
+// - -"edition": 3,
+// - -"year": 2010
+// }"
 ```
