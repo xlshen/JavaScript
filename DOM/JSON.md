@@ -87,7 +87,7 @@ var jsonText = JSON.stringify(books);
 var books = {
   "title": "xlshen",
   edition: 3,
-  releaseDate: new Date(2017,03,20);
+  releaseDate: new Date(2017,03,20)
 };
 var jsonText = JSON.stringify(books);
 var bookCopy = JSON.parse(jsonText, function(key, value){
