@@ -80,3 +80,21 @@ var jsonText = JSON.stringify(books);
 > 1. 如果存在toJSON()方法，执行toJSON()方法，否则按照默认顺序执行  
 > 2. 如果提供第二个参数，应用过滤器  
 > 3. 如果提供第三个参数，返回（2）中执行格式化样式  
+
+`parse()`方法可以接收另外一个函数参数，该函数和`stringify()`第二个过滤器函数一样，接收两个参数，属性名和属性值，称为还原函数。  
+如果返回函数返回undefined，则表示要删除该值，如果返回其他值，则返回value
+```javascript
+var books = {
+  "title": "xlshen",
+  edition: 3,
+  releaseDate: new Date(2017,03,20);
+};
+var jsonText = JSON.stringify(books);
+var bookCopy = JSON.parse(jsonText, function(key, value){
+  if(key == "releaseDate"){
+    return new Date(value);
+  }else{
+    return value;
+  }
+});
+```
