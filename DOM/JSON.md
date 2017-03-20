@@ -62,3 +62,17 @@ var jsonText = JSON.stringify(book, null, "- -");
 // - -"year": 2010
 // }"
 ```
+3. toJSON()方法
+任何对象都可以添加toJSON()方法：
+```javascript
+var book = {
+  "title":"Professional JS",
+  edition: 3,
+  year: 2010,
+  toJSON: function(){
+    return this.title;
+  }
+};
+var jsonText = JSON.stringify(books);
+// ""xlshen""
+```
