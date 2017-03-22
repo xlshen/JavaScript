@@ -97,5 +97,4 @@ var bookCopy = JSON.parse(jsonText, function(key, value){
     return value;
   }
 });
-/////////////////////
 ```
