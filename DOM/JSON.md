@@ -96,5 +96,5 @@ var bookCopy = JSON.parse(jsonText, function(key, value){
   }else{
     return value;
   }
-});;
+});
 ```
