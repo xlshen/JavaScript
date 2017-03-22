@@ -82,8 +82,7 @@ var jsonText = JSON.stringify(books);
 > 3. 如果提供第三个参数，返回（2）中执行格式化样式  
 
 `parse()`方法可以接收另外一个函数参数，该函数和`stringify()`第二个过滤器函数一样，接收两个参数，属性名和属性值，称为还原函数。  
-如果返回函数返回undefined，则表示要删除该值，如果返回其他值，则返回value  
-000000000000000000000
+如果返回函数返回undefined，则表示要删除该值，如果返回其他值，则返回value
 这里越是
 ```javascript
 var books = {
@@ -100,4 +99,3 @@ var bookCopy = JSON.parse(jsonText, function(key, value){
   }
 });
 ```
-测试冲突发生情况处理一下！
