@@ -40,7 +40,7 @@ var jsonText = JSON.stringify(book, function(key, value){
       return "JavaScript";
     case "edition":
       return 1;
-    default: 
+    default:
       return value;
   }
 });
