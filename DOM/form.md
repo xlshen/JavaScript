@@ -179,6 +179,59 @@ validity属性
     selectbox.add(newoption, undefined); // 最佳方案
   </script>
 ```
+##### 序列化表单
+```javascript
+function serialize(form){
+  var parts = [],
+      field = null,
+      i,
+      len,
+      j,
+      optLen,
+      option,
+      optValue;
+  for(i = 0, len = form.elements.length; i < len; i++){
+    field = form.elements[i];
+    switch (field.type) {
+      case "select-one":
+      case "select-multiple":
+        if(field.name.length){
+          for(j = 0, optLen = field.options.length; j < optLen; j++){
+            option = field.options[j];
+            if(option.selected){
+              optValue = "";
+              if(option.hasAttribute){ // 判断是否支持hasAttribute方法
+                optValue = (option.hasAttribute("value") ? option.value : option.text);
+              }else{ // 兼容IE8及以下
+                optValue = (option.attributes["value"].specified ? option.value : option.text);
+              }
+              parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+            }
+          }
+        }
+
+        break;
+      case undefined:
+      case "file":
+      case "submit":
+      case "reset":
+      case "button":
+        break;
+      case "radio":
+      case "checkbox":
+        if(!field.checked){
+          break;
+        }
+      default:
+        if(field.name.length){
+          parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+        }
+
+    }
+  }
+  return parts.join("&");
+}
+```
 ##### 富文本编辑
 页面签入iframe，通过设置designMode属性，designMode值有两个："off"(默认值)和"on"。设置为"on"时文档可编辑。只有页面完全加载之后才能设置designMode值。
 ```html
