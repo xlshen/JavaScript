@@ -152,7 +152,9 @@ xhr.send(null);
 3. error: 在请求出错时触发
 4. abort: 调用abort()之后触发
 5. load: 在接收到完整数据时触发 // IE8+只支持load
-6. loadend: 在通讯完成或者触发error、abort、load事件后触发 // 没有浏览器支持
+6. loadend: 在通讯完成或者触发error、abort、load事件后触发
+// 没有浏览器支持
+
 ###### load事件
 `load`事件用来替代`onreadystatuschange`事件，load事件处理程序接收`event`参数，其`target`属性指向XHR对象，可以通过该属性访问XHR对席那个的所有方法和属性。然而并非浏览器都实现了适当的事件对象。结果我们还是要通过判断`status`来决定当前状态：
 ```javascript
@@ -170,6 +172,7 @@ xhr.onload = function(event){
 >lengthComputable: 进度信息是否可用（布尔型）  
 loaded: 已经接受的字节数  
 total: 根据Content-Length响应头信息确定的预期字节数
+
 ```javascript
 xhr.onprogress = function(event){
   var statusLen = document.getElementById("status");
@@ -178,3 +181,121 @@ xhr.onprogress = function(event){
   }
 }
 ```
+##### 跨源资源共享
+默认情况下，XHR只能访问与包含它的页面位于同一个域的资源。CORS(Cross-Origin Resource Sharing)跨源资源共享是W3C的一个工作草案，背后思想就是使用自定义的HTTP头部让浏览器与服务器沟通，从而决定请求或响应是成功或者失败
+###### IE中CORS的实现
+IE8中引入了`XDR(XDomainRequest)`类型，相比XHR对象更为安全可靠实现跨域通信，不同之处：
+>1. Cookie不会随请求发出，也不会随响应返回
+2. 只能设置头部信息中的Content-Type
+3. 不能访问响应头信息
+4. 只支持GET和POST请求
+
+所有XDR都是异步的
+```javascript
+var xdr = new XDomainRequest();
+xdr.onload = function(event){
+  alert(xdr.responseText);
+}
+xdr.onerror = function(event){
+  alert("Error");
+}
+xdr.open("GET", "exm.php"); // 只接收两个参数
+xdr.send(null);
+```
+接收响应后，只能获取响应的文本数据；没有办法访问响应的state，只要响应有效就会触发load事件，如果失败就会触发error事件，终止请求abort();XDR对象也支持timeout属性和ontimeout事件处理程序。  
+为了支持POST请求，XDR对象也提供contentType属性，用来表示发送信息的格式：
+```javascript
+xdr.contentType = "application/x-www-form-urlencoded";
+xdr.send("name=value&age=18");
+```
+###### 其他浏览器对CORS的实现
+Firefox 3.5+、Safari、Chrome、IOS版的Safari和Android的Webkit都通过XMLHttpRequest对象原生支持CORS。要请求另一个域的资源，只要在open()方法的URL中添加绝对URL地址即可。
+```javascript
+xhr.open("GET", "http://in.exm.php", true);
+```
+与IE中XDR对象不同，通过跨域的XDR对象可以访问响应的status和statusText属性，而且支持同步。但还有以下限制：
+>1. 不能使用setRequestHeader()设置自定义头部信息
+2. 不能接收和发送Cookie
+3. 调用getAllResponseHeaders()方法总是返回空字符串
+
+###### Preflighted Requests
+CORS通过一种叫做Preflighted Requests验证机制支持开发人员使用自定义的头部、GET和POST之外的方法，以及不同类型的主体内容。在使用下列高级选项发送请求时，就会向服务器先发送一个Preflight请求，该请求使用OPTIONS方法。
+>Origin: 发送请求源  
+Access-Control-Request-Method: 请求自身使用的方法  
+Access-Control-Request-Headers: （可选）自定义的头信息，多个头信息逗号分隔
+
+```javascript
+// 带自定义头信息的POST请求
+Origin: http://github.xlshen.io
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: JS
+```
+发送该请求后，服务器会决定是否允许该类请求。通过设置以下字段：
+>Access-Control-Allow-Origin: 允许的发送请求源域    
+Access-Control-Allow-Methods: 允许的方法，多个以逗号分隔  
+Access-Control-Allow-Headers: 允许的头部信息，多个以逗号分隔  
+Access-Control-Max-Age: 应该将这个Preflight请求缓存多久，多久之内不用再次发送该Preflight请求（秒）
+
+```javascript
+Access-Control-Allow-Origin: http://github.xlshen.io
+Access-Control-Allow-Methods: POST,GET
+Access-Control-Allow-Headers: JS
+Access-Control-Max-Age: 3600
+```
+
+Preflight之后会把该请求缓存起来，为此的代价就是多了一次HTTP请求。
+###### 带凭据的请求
+默认情况下，跨域请求是不携带凭证（Cookie，HTTP认证等）。通过withCredentials属性设置为true，可以指定某个请求应该发送凭证。如果服务器接收到请求，会发送响应：
+```javascript
+Access-Control-Allow-Credentials: true
+```
+
+如果服务器响应中没有该设置，则浏览器不会把响应交给JavaScript（responseText为空，status为0，而且会调用error事件处理程序）。另外，服务器可以在Preflight请求的响应中发送该字段，表示允许源请求发送带凭证的请求。【IE10及更早版本不支持】
+###### 跨浏览器CORS
+```javascript
+function createCORSRequest(method, url){
+  var xhr = new XMLHttpRequest();
+  if("withCredentials" in xhr){
+    xhr.open(method, url, true);
+  }else if(typeof XDomainRequest != "undefined"){
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  }else{
+    xhr = null;
+  }
+  return xhr;
+}
+var request = createCORSRequest("GET", "http://github.xlshen.io");
+if(request){
+  xhr.onload = function(){
+    // responseText
+  }
+  xhr.send(null);
+}
+```
+XDR和XHR共有的方法：
+>abort(), onerror, onload, responseText, send()
+
+##### 其他跨域技术
+利用DOM中能够执行跨域请求的功能，在不依赖XHR对象的情况下也能发送某种请求。
+###### 图像Ping
+一个网页加载图片不用担心跨域问题，这也是广告跟踪浏览量的主要方式。图像Ping与服务器进行简单、单向的跨域通信，请求的数据可以通过查询字符串发送，服务器响应通常是图像或者204（No Content），通过图像Ping得不到任何数据。但是可以通过onload的onerror事件监听什么时候接收到。
+```javascript
+var image = new Image();
+image.onload = image.onerror = function(){
+  alert("Done");
+}
+image.src = "/xlshen.gif?name=xlshen"; // 发送name参数给服务器
+```
+该方法缺点：只能发送GET方法；无法获取服务器响应文本
+###### JSONP
+JSONP是JSON with padding（填充式JSON），是应用JSON的一种新方法。JSONP两部分组成：回调函数和数据。回调函数是当响应之后执行的函数，其名字是在请求时指定的，数据就是传入到回调函数中的JSON数据。
+```javascript
+function jsonpCallback(response){
+  // response
+}
+var script = document.creatElement("script");
+script.src = "http://...?callback=jsonpCallback";
+document.body.insertBefore(script, document.body.firstChild);
+```
+与图像Ping相比，JSONP可以直接方法响应内容，但还有亮点不足：如果访问域家在的代码存在安全问题，就会造成不良后果；另外，不能轻易确定JSONP请求失败，为此，开发人员一般使用计时器进行不精确判断。
