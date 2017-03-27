@@ -347,7 +347,7 @@ source.onmessage = function (event) {
   var data = event.data; // 处理数据
 }
 ```
-默认情况下，EventSource对象会保持与服务器的活动连接，如果连接断开，还会重新连接。这意味着SSE适合长轮询和HTTP流。如果向强制断开连接不再重连，可以调用close()方法。
+默认情况下，EventSource对象会保持与服务器的活动连接，如果连接断开，还会重新连接。这意味着SSE适合长轮询和HTTP流。如果向强制断开连接不再重连，可以调用close()方法。  
 II. 事件流  
 服务器事件通过一个持久的HTTP响应发送，这个响应的MIME类型为text／event-stream。响应的格式是纯文本，简单情况是每个数据项前面都有data:,如：
 ```html
