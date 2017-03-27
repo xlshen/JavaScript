@@ -299,3 +299,123 @@ script.src = "http://...?callback=jsonpCallback";
 document.body.insertBefore(script, document.body.firstChild);
 ```
 与图像Ping相比，JSONP可以直接方法响应内容，但还有亮点不足：如果访问域家在的代码存在安全问题，就会造成不良后果；另外，不能轻易确定JSONP请求失败，为此，开发人员一般使用计时器进行不精确判断。
+###### Comet
+人称：“服务器推送”，Ajax是客户端向服务器推送，而Comet是服务器向客户端推送技术。Comet能够让信息实时推送到页面，非常适合实时通讯领域。  
+有两种实现Comet方法：`长轮询`和`流`  
+1. 传统轮询（短轮询），浏览器定时向服务器发送请求更新数据。长轮询把短轮询反过来，页面向服务器发送一个请求，然后服务器链接一直打开，直到有数据可以发送，发送完数据之后，链接关闭，随即有发送一个请求到服务器，这一过程页面打开期间一直不间断。  
+短轮询和长轮询之前都要先对服务器发送请求，区别在于短轮询是服务器立即发送响应，不管数据是否有效，而长轮询是等待发送响应。轮询的优势是所有浏览器都支持，因为使用XHR和setTimeout()就能实现。  
+2. 第二种流行的是HTTP流。流不同于两种轮询，因为它在页面的整个生命周期内只使用一个HTTP连接。具体来说，浏览器向服务器发送一个请求，服务器保持连接打开，然后周期性的向浏览器发送数据。在Firefox、Safari、Opera和Chrome中，通过监听readystatechange事件及检测readyState是否为3，就可以利用XHR对象实现HTTP流。
+```javascript
+function createStreamingClient(url, progress, finished){
+  var xhr = new XMLHttpRequest(),
+      recevied = 0;
+  xhr.open("GET", url, true);
+  xhr.onreadystatuschange = function(){
+    var result;
+    if(xhr.readyState == 3){
+      result = xhr.responseText.substring(recevied);
+      recevied += result.length;
+      progress(result); // 执行回调函数
+    }else if(xhr.readyState == 4){
+      finished(xhr.responseText);
+    }
+  };
+  xhr.send(null);
+  return xhr;
+}
+var client = createStreamingClient("stream.php", function(data){
+  alert(data);
+}, function(data){
+  alert("Done");
+});
+```
+为了简化Comet的实现，为Comet创建了两个新的接口。
+###### 服务器发送事件
+SSE(Server-Sent Events)是围绕Comet交互推出的API或者模式。SSE API用于创建到服务器的单向连接，服务器通过这个连接可以发送任意数量的数据。服务器响应的MIME类型必须是text／event-stream，而且是浏览器中的JavaScript API能解析格式的输出。SSE支持短轮询，长轮询和HTTP流，而且能在断开连接时自动确定何时重新连接。支持SSE浏览器：Firefox 6+,Safari 5+, Opera 11+,Chrome和IOS 4+ Safari。  
+I. `SSE API`
+```javascript
+// 创建一个新的EventSource对象
+var source = new EventSource("myevents.php"); // 传入URL必须与页面同源（域、端口）
+```
+EventSource实例有一个readyState属性，值为0表示正在连接到服务器，值为1表示打开了连接，值为2表示关闭了连接。  
+另外三个事件：
+1. open: 建立连接时触发  
+2. message: 接收服务器新数据时触发  
+3. error: 在无法建立连接时触发
+```javascript
+source.onmessage = function (event) {
+  var data = event.data; // 处理数据
+}
+```
+默认情况下，EventSource对象会保持与服务器的活动连接，如果连接断开，还会重新连接。这意味着SSE适合长轮询和HTTP流。如果向强制断开连接不再重连，可以调用close()方法。
+II. 事件流  
+服务器事件通过一个持久的HTTP响应发送，这个响应的MIME类型为text／event-stream。响应的格式是纯文本，简单情况是每个数据项前面都有data:,如：
+```html
+data: foo
+
+data: bar
+
+data:foo
+data:bar
+```
+上述响应中，事件流中的第一个message事件返回的event.data值为“foo”，第二个是”bar”，第三个是“foo\nbar”(中间有换行符)。只有在包含data:的数据后面有空行时，才会触发message事件。通过id:前缀可以给特定的事件指定一个关联的ID，这个ID行位于data:行前或者后面：
+```html
+data: foo
+id: 1
+```
+设置ID后，EventSource对象会跟踪上一次触发事件，如果断开，下次会向服务器发送一个包含Last-Event-ID的特殊HTTP头部请求，方便服务器直到下一次该触发哪个事件。在多次连接的事件流中，这种机制可以确保浏览器正确的顺序接收连接的数据段。
+###### Web Sockets
+`Web Sockets`在一个持久连接上提供全双工、双向通信。首先浏览器发送一个HTTP请求到服务器，建立连接后会使用HTTP转换为`Web Sockets`协议，使用标准的HTTP服务器无法实现`Web Sockets`，只有支持该协议的专门服务器才能正常工作。  
+`Web Sockets`使用自定义的协议，所以URL模式也不同，未加密的连接不再是`http://`，而是`ws://`;加密的连接也不是`https://`，而是`wss://`。在使用时必须带上这个模式，将来可能支持其他模式。  
+使用自定义协议的好处：客户端和服务器通信发送非常少量数据，而不是HTTP那样字节级别开销，因此非常适合移动端开发。支持浏览器：Firefox 6+,Safari 5+,Chrome和IOS 4+ Safari。
+I. `Web Sockets API`
+```javascript
+// 实例话WebSockets对象并传入连接的URL
+var socket = new WebSockets("ws://www.exam.com/server/php");
+```
+【注：传入的URL必须是绝对URL同源策略对Web Sockets不适用，因此可以打开任何站点，至于是否与某个域中的页面通信，完全取决于服务器】
+实例化后WebSockets之后，浏览器马上尝试创建连接，与XHR类似，WebSockets也有一个表示当前状态的readyState属性：
+>1. WebSockets.OPENING(0): 正在建立连接
+2. WebSockets.OPEN(1): 已经建立连接
+3. WebSockets.CLOSING(2): 正在关闭连接
+4. WebSockets.CLOSE(3): 已经关闭连接
+
+WebSockets没有readystatechange事件；不过，它有其他事件，对应不同状态。readyState的值永远从0开始。要关闭Web Socket连接，调用close()方法
+```javascript
+socket.close();
+```
+II. 发送和接收数据  
+```javascript
+var socket = new WebSockets("ws://www.exam.com/server.php");
+socket.send("First fire.");
+```
+因为Web Sockets只能通过连接发送纯文本数据，对于复杂的数据发送前先序列化。  
+当服务器向客户端发送数据时，WebSockets对象触发message事件，这个事件与其他协议类似，返回的数据保存在event.data属性中
+```javascript
+socket.onmessage = function(event){
+  var data = event.data; // 处理数据
+}
+```
+III. 其他事件  
+>1. open: 成功建立连接时触发
+2. error: 发生错误时触发，连接不能持续
+3. close: 连接关闭时触发
+
+WebSockets对象不支持DOM2级事件监听，必须用DOM0级语法分别定义每个事件处理程序。
+```javascript
+socket.onopen = function(){
+  alert("连接建立！")；
+}；
+socket.onerror = function () {
+  alert("连接出错!")；
+};
+socket.onclose = function (event) {
+  // event对象获取属性wasClean, code, reason
+  alert("连接关闭！");
+  console.log("Clean ? " + event.wasClean + " Code = " + event.code + " Reason = " + event.reason);
+}
+```
+只有close事件中event对象有额外信息：wasClean（布尔型，表示连接是否明确关闭）、code（服务器返回的数值状态码）和reason（字符串，服务器发回的消息）。
+###### SSE VS Web Sockets
+1. 是否自由建立和维护Web Sockets服务器？  
+2. 需不需要双向通信？如果只需要读取服务器数据，SSE比较容易实现。如果必须双向通信，Web Sockets更好。当然也可以组合使用XHR和SSE实现双向通信。
