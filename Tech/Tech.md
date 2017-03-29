@@ -296,3 +296,46 @@ target.fire({type: "message", message: "Hello World"});
 target.removeHandler("message", handleMessage);
 ```
 #### 拖放
+```javascript
+/**
+ * 单例模式
+ * @return [Object] {enable, disable}
+ */
+var DragDrop = function(){
+  var dragging = null;
+  function handleEvent(event){
+    event = Event.getEvent(event);
+    var target = Event.getTarget(event);
+    // 判断事件类型
+    switch (event.type) {
+      case "mousedown":
+        if(target.className.indexOf("draggable") > -1){
+          dragging = target;
+        }
+        break;
+      case "mousemove":
+        if(dragging !== null){
+          dragging.style.left = event.clientX +"px";
+          dragging.style.top = event.clientY + "px";
+        }
+        break;
+      case "mouseup":
+        dragging = null;
+        break;
+      default:
+    }
+  }
+  return {
+    enable: function(){
+      Event.addHandle(document, "mousedown", handleEvent);
+      Event.addHandle(document, "mousemove", handleEvent);
+      Event.addHandle(document, "mouseup", handleEvent);
+    },
+    disable: function(){
+      Event.removeHandler(document, "mousedown", handleEvent);
+      Event.removeHandler(document, "mousemove", handleEvent);
+      Event.removeHandler(document, "mouseup", handleEvent);
+    }
+  }
+}();
+```
