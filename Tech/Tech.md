@@ -351,6 +351,7 @@ var DragDrop = function(){
         diffY = 0,
         dragdrop = new EventTarget(); // 自定义事件类型
     function handleEvent(event){
+        var target = event.target;
         switch (event.type) {
             case "mousedown":
                 if(target.className.indexOf("draggable") > -1){
@@ -376,16 +377,16 @@ var DragDrop = function(){
                 dragdrop.fire({
                     type: "drag",
                     target: dragging,
-                    x: clientX,
-                    y: clientY
+                    x: event.clientX,
+                    y: event.clientY
                 });
                 break;
             case "mouseup":
                 dragdrop.fire({
                     type: "dragend",
                     target: dragging,
-                    x: clientX,
-                    y: clientY
+                    x: event.clientX,
+                    y: event.clientY
                 });
                 dragging = null;
                 break
