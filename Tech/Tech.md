@@ -406,6 +406,7 @@ var DragDrop = function(){
     };
     return dragdrop;
 }();
+DragDrop.enable();
 DragDrop.addHandler("dragstart", function(event){
     var status = document.getElementById("status");
     status.innerHTML = "Dragging " + event.target.id;
