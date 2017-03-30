@@ -302,7 +302,9 @@ target.removeHandler("message", handleMessage);
  * @return [Object] {enable, disable}
  */
 var DragDrop = function(){
-  var dragging = null;
+  var dragging = null,
+      diffX = 0, // 防止鼠标点击跳动
+      diffY = 0; // 防止鼠标点击跳动
   function handleEvent(event){
     event = Event.getEvent(event);
     var target = Event.getTarget(event);
@@ -311,12 +313,14 @@ var DragDrop = function(){
       case "mousedown":
         if(target.className.indexOf("draggable") > -1){
           dragging = target;
+          diffX = event.clientX - target.offsetLeft;
+          diffY = event.clientY - target.offsetTop;
         }
         break;
       case "mousemove":
         if(dragging !== null){
-          dragging.style.left = event.clientX +"px";
-          dragging.style.top = event.clientY + "px";
+          dragging.style.left = (event.clientX - diffX) + "px";
+          dragging.style.top = (event.clientY - diffY) + "px";
         }
         break;
       case "mouseup":
@@ -339,3 +343,4 @@ var DragDrop = function(){
   }
 }();
 ```
+#### 添加自定义事件
