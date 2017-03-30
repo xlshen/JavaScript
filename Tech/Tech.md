@@ -344,3 +344,69 @@ var DragDrop = function(){
 }();
 ```
 #### 添加自定义事件
+```javascript
+var DragDrop = function(){
+    var dragging = null,
+        diffX = 0,
+        diffY = 0,
+        dragdrop = new EventTarget(); // 自定义事件类型
+    function handleEvent(event){
+        switch (event.type) {
+            case "mousedown":
+                if(target.className.indexOf("draggable") > -1){
+                    dragging = target;
+                    diffX = event.clientX - target.offsetLeft;
+                    diffy = event.clientY - target.offsetTop;
+                }
+                /**
+                 * 定义事件类型
+                 */
+                dragdrop.fire({
+                    type: "dragstart",
+                    target: dragging,
+                    x: event.clientX,
+                    y: event.clientY
+                });
+                break;
+            case "mousemove":
+                if(dragging !== null){
+                    target.style.left = (event.clientX - diffX) + "px";
+                    target.style.top = (event.clientY - diffY) + "px";
+                }
+                dragdrop.fire({
+                    type: "drag",
+                    target: dragging,
+                    x: clientX,
+                    y: clientY
+                });
+                break;
+            case "mouseup":
+                dragdrop.fire({
+                    type: "dragend",
+                    target: dragging,
+                    x: clientX,
+                    y: clientY
+                });
+                dragging = null;
+                break
+            default:
+
+        }
+    }
+    dragdrop.enable = function(){
+        Event.addHandle(document, "mousedown", handleEvent);
+        Event.addHandle(document, "mousemove", handleEvent);
+        Event.addHandle(document, "mouseup", handleEvent);
+    };
+    dragdrop.disable = function(){
+        Event.removeHandler(document, "mousedown", handleEvent);
+        Event.removeHandler(document, "mousemove", handleEvent);
+        Event.removeHandler(document, "mouseup", handleEvent);
+    };
+    return dragdrop;
+}();
+DragDrop.addHandler("dragstart", function(event){
+    var status = document.getElementById("status");
+    status.innerHTML = "Dragging " + event.target.id;
+});
+```
