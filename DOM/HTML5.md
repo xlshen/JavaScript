@@ -112,7 +112,7 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
     var leftNum, topNum;
     document.getElementById("dragTest").addEventListener("dragstart", function(event){
         // 需要增加document的dragover事件，否则无法准确获取clientX和clientY属性
-        document.addEventListener("dragover", function(event){ 
+        document.addEventListener("dragover", function(event){
             topNum = event.clientY;
             leftNum = event.clientX;
             console.log(event.clientX, event.clientY);
@@ -141,7 +141,7 @@ HTML5提供了一个`draggable`属性，表示元素是否可以拖动，图像�
 ```html
 <div class="mediaplayer">
   <div class="video">
-    <video id="player" src="movie.mov" poster="img.png" width="200" height="200"> 
+    <video id="player" src="movie.mov" poster="img.png" width="200" height="200">
       不支持
     </video>
   </div>
@@ -195,7 +195,7 @@ history.pushState({
 Event.addHandle(window, "popstate", function(event){
   var state = event.state;
   if(state){ // 回撤到第一个页面state属性为null！
-    // 
+    //
   }
 });
 ```
@@ -211,3 +211,98 @@ history.back(); // alerts "location: http://example.com/example.html?page=1, sta
 history.back(); // alerts "location: http://example.com/example.html, state: null // 回到最初状态，所以state为null
 history.go(2);  // alerts "location: http://example.com/example.html?page=3, state: {"page":3} // 回到replaceState操作时状态
 ```
+#### 离线应用与客户端存储
+##### 离线检测
+`navigator.onLine`属性检测设备能否访问网络返回true or false，同时HTML5还定义了两个事件：`online`和`offline`:当网络从离线变为在线或者在线变为离线时会触发这两个事件。支持离线检测的浏览器IE6+（只支持navigator.online）、Firefox、Safari4、Opera 10.6、Chrome、IOS3.2 Safari和Android Webkit。  
+##### 应用缓存
+HTML5的应用缓存简称：appcache，专门为开发离线Web应用而设计的。Appcache就是从浏览器的缓存中分出来一块缓存区。要想在这个缓存区中保存数据，可以使用一个描述文件：manifest file，列出要下载和缓存的资源。  
+application cahce是将大部分图片资源、js、css等静态资源放在manifest文件配置中。当页面打开时通过manifest文件来读取本地文件或是请求服务器文件。  
+使用缓存接口可为您的应用带来以下三个优势：  
+I. 离线浏览 – 用户可在离线时浏览您的完整网站  
+II. 速度 – 缓存资源为本地资源，因此加载速度较快   
+III. 服务器负载更少 – 浏览器只会从发生了更改的服务器下载资源  
+```javascript
+CACHE MANIFEST
+#Comment
+file.js
+file.css
+```
+可以在<html>中manifest属性指定这个文件的路径：
+```javascript
+<html manifest="/offline.manifest">
+```
+一个简单离线页面应用包含以下
+```html
+// index.html
+<html manifest="clock.manifest">
+  <head>
+    <title>AppCache Test</title>
+    <link rel="stylesheet" href="clock.css">
+    <script src="clock.js"></script>
+  </head>
+  <body>
+    <p><output id="clock"></output></p>
+    <div id="log"></div>
+  </body>
+</html>
+// clock.manifest
+CACHE MANIFEST
+#VERSION 1.0
+CACHE:
+clock.css
+clock.js
+// JavaScript 代码
+<script type="text/javascript">
+    var appCache = window.applicationCache;
+    switch (appCache.status) {
+        case appCache.UNCACHED: // UNCACHED == 0
+            return 'UNCACHED';
+            break;
+        case appCache.IDLE: // IDLE == 1
+            return 'IDLE';
+            break;
+        case appCache.CHECKING: // CHECKING == 2
+            return 'CHECKING';
+            break;
+        case appCache.DOWNLOADING: // DOWNLOADING == 3
+            return 'DOWNLOADING';
+            break;
+        case appCache.UPDATEREADY:  // UPDATEREADY == 4
+            return 'UPDATEREADY';
+            break;
+        case appCache.OBSOLETE: // OBSOLETE == 5
+            return 'OBSOLETE';
+            break;
+        default:
+            return 'UKNOWN CACHE STATUS';
+            break;
+    };
+</script>
+// 为了通过编程更新cache，首先调用 applicationCache.update()。这将会试图更新用户的 cache（要求manifest文件已经改变）。最后，当 applicationCache.status 处于 UPDATEREADY 状态时， 调用applicationCache.swapCache()，旧的cache就会被置换成新的。
+<script type="text/javascript">
+    var appCache = window.applicationCache;
+    appCache.update(); // Attempt to update the user’s cache.
+    if (appCache.status == window.applicationCache.UPDATEREADY) {
+      appCache.swapCache();  // The fetch was successful, swap in the new cache.
+    }
+</script>
+```
+#### 存储数据
+##### Cookie
+HTTP Cookie，简称cookie。  
+I. 限制：每个域cookie总数是有限的，不过浏览器之间各不相同，多小为4096B-1（4095B）的长度限制。  
+> IE7+每个域名最多50个    
+Firefox每个域最多50个   
+Opera每个域最多30个  
+Safari和Chrome每个域数量没有硬性规定  
+
+当超过这个限制后再设置cookie，浏览器会清除之前设置的cookie。
+II. cookie的构成  
+> 名称（不区分大小写）: 必须经过URL编码！  
+值: 必须URL编码  
+域：有效域，说明cookie在哪些域有效，如果没有明确规定，则表示设置cookie那个域   
+路径： 指定域中的路径，如果路径设置了：https://xlshen.github.io/index/，则只有这个路径下的文件可以访问cookie，https://xlshen.github.io/路径下的文件不可以访问。  
+失效时间： cookie被删除的时间戳。默认情况下，浏览器会话结束后自动删除，但是可以手动设置过期时间，该值为GMT格式日期。  
+安全标志： 制定后，cookie只有在使用了SSL链接的时候才能发送到服务器。例如：cookie信息可以发送给:https://xlshen.github.io/，而不是：http://xlshen.github.io/。  
+
+III. JavaScript中Cookie
