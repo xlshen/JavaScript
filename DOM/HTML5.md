@@ -301,8 +301,8 @@ II. cookie的构成
 > 名称（不区分大小写）: 必须经过URL编码！  
 值: 必须URL编码  
 域：有效域，说明cookie在哪些域有效，如果没有明确规定，则表示设置cookie那个域   
-路径： 指定域中的路径，如果路径设置了：https://xlshen.github.io/index/，则只有这个路径下的文件可以访问cookie，https://xlshen.github.io/路径下的文件不可以访问。  
+路径： 指定域中的路径，如果路径设置了："https://xlshen.github.io/index/"，则只有这个路径下的文件可以访问cookie，"https://xlshen.github.io/"路径下的文件不可以访问。  
 失效时间： cookie被删除的时间戳。默认情况下，浏览器会话结束后自动删除，但是可以手动设置过期时间，该值为GMT格式日期。  
-安全标志： 制定后，cookie只有在使用了SSL链接的时候才能发送到服务器。例如：cookie信息可以发送给:https://xlshen.github.io/，而不是：http://xlshen.github.io/。  
+安全标志： 制定后，cookie只有在使用了SSL链接的时候才能发送到服务器。例如：cookie信息可以发送给:"https://xlshen.github.io/"，而不是："http://xlshen.github.io/"。  
 
 III. JavaScript中Cookie
