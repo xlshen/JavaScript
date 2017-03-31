@@ -299,7 +299,7 @@ Safari和Chrome每个域数量没有硬性规定
 当超过这个限制后再设置cookie，浏览器会清除之前设置的cookie。
 II. cookie的构成  
 > 名称（不区分大小写）: 必须经过URL编码！  
-值: 必须URL编码  
+值: 必须URL编码！  
 域：有效域，说明cookie在哪些域有效，如果没有明确规定，则表示设置cookie那个域   
 路径： 指定域中的路径，如果路径设置了："https://xlshen.github.io/index/" ，则只有这个路径下的文件可以访问cookie，"https://xlshen.github.io/" 路径下的文件不可以访问。  
 失效时间： cookie被删除的时间戳。默认情况下，浏览器会话结束后自动删除，但是可以手动设置过期时间，该值为GMT格式日期。  
