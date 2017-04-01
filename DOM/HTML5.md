@@ -426,3 +426,12 @@ var subCookieUtil = {
   }
 };
 ```
+##### Web Storage
+`sessionStorage`和`localStorage`:
+> 1. clear()： 删除所有值
+2. getItem(name): 获取指定名称name的值
+3. key(index): 获得index位置处值的名称
+4. removeItem(name): 删除由name设置一个对应的值
+5. setItem(name, value): 设置name及对应的值
+
+属性length可以获取键值对的多少。
