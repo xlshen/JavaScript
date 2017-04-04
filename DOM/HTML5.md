@@ -473,7 +473,17 @@ IndexedDB设计操作完全是异步进行的，因此，大多数操作都是�
         request.onupgradeneeded = function(event)
         {
             this.db = event.target.result;
-            this.db.createObjectStore(dbObject.db_store_name);
+            var store = this.db.createObjectStore(dbObject.db_store_name);
+            // 创建索引必须放到这里！！！
+            /**
+             * createIndex(name, keyname, {unique: Boolean}[optional]);
+             * name: 索引的名字
+             * keyname: 索引属性的名字
+             * unique: true表示索引唯一性，false表示不唯一
+             * @return IDBIndex实例
+             */
+            var index = store.createIndex("index", "title", {unique: false});
+            store.deleteIndex("index"); // 删除指定索引也必须放在这里
         };
         //打开数据库
         request.onsuccess = function(event)
@@ -481,6 +491,9 @@ IndexedDB设计操作完全是异步进行的，因此，大多数操作都是�
             //此处采用异步通知. 在使用curd的时候请通过事件触发
             dbObject.db = event.target.result;
         };
+        request.onblocked = function() {
+          console.log("Your database version can't be upgraded because the app is open somewhere else.");
+        }
     };
     /**
      * 增加和编辑操作
@@ -571,15 +584,6 @@ IndexedDB设计操作完全是异步进行的，因此，大多数操作都是�
          */
         request = store.openCursor(boundRange, IDBCursor.NEXT_NO_DUPLICATE); // 跳过重复的选项
 
-        // 创建索引
-        /**
-         * createIndex(name, keyname, {unique: Boolean}[optional]);
-         * name: 索引的名字
-         * keyname: 索引属性的名字
-         * unique: true表示索引唯一性，false表示不唯一
-         * @return IDBIndex实例
-         */
-        var index = store.createIndex("index", "title", {unique: false});
         // 获取指定的索引
         var index = store.index("index"), // index()方法获取指定的索引
             request = index.openCursor(), // 在索引上创建游标，和对象存储空间上调用一样
@@ -600,8 +604,7 @@ IndexedDB设计操作完全是异步进行的，因此，大多数操作都是�
              * 属性： objectStore [对象存储空间]
              * 属性： unique [索引键是否唯一]
              */
-            request = index.getKey("title"),
-        store.deleteIndex("index"); // 删除指定索引
+            request = index.getKey("title")；
     };
     /**
      * 清除整个对象存储(表)
