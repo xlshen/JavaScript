@@ -434,4 +434,222 @@ var subCookieUtil = {
 4. removeItem(name): 删除由name设置一个对应的值
 5. setItem(name, value): 设置name及对应的值
 
-属性length可以获取键值对的多少。
+属性length可以获取键值对的多少。  
+作用域：localStorage只要在相同的协议、相同的主机名、相同的端口下，就能读取/修改到同一份localStorage数据。  
+sessionStorage比localStorage更严苛一点，除了协议、主机名、端口外，还要求在同一窗口（也就是浏览器的标签页）  
+域名限制：由于浏览器的安全策略，localstorage是无法跨域的，也无法让子域名继承父域名的localstorage数据，这点跟cookies的差别还是蛮大的。  
+##### IndexedDB
+设计思想：创建一套API，方便保存和读取JavaScript对象，同时还支持查询和搜索。  
+IndexedDB设计操作完全是异步进行的，因此，大多数操作都是以请求方式进行，浏览器未实现完全统一。  
+```html
+<!-- IndexedDB 实例 -->
+<body onload=" init() ">
+    <input type="button" value="新增几条数据" onclick=" Tinsert(); "/>
+    <input type="button" value="查找一条记录" onclick=" Tselect(); "/>
+    <input type="button" value="删除一条记录" onclick=" Tdelete(); "/>
+    <input type="button" value="更新一条记录" onclick=" Tupdate(); "/>
+    <input type="button" value="清除所有表数据" onclick=" Tclear(); "/>
+    <input type="button" value="删除本地数据库" onclick=" Ddelete('SISO'); "/>
+</body>
+```
+```javascript
+(function(){
+    var dbObject = {};
+    dbObject.init = function(params){
+        this.db_name = params.db_name;
+        this.db_version = params.db_version;
+        this.db_store_name = params.db_store_name;
+        if (!window.indexedDB)
+        {
+            window.alert("你的浏览器不支持IndexDB,请更换浏览器");
+        }
+
+        var request = indexedDB.open(this.db_name,this.db_version);
+        //打开数据失败
+        request.onerror = function(event)
+        {
+            alert("不能打开数据库,错误代码: " + event.target.errorCode);
+        };
+        request.onupgradeneeded = function(event)
+        {
+            this.db = event.target.result;
+            this.db.createObjectStore(dbObject.db_store_name);
+        };
+        //打开数据库
+        request.onsuccess = function(event)
+        {
+            //此处采用异步通知. 在使用curd的时候请通过事件触发
+            dbObject.db = event.target.result;
+        };
+    };
+    /**
+     * 增加和编辑操作
+     */
+    dbObject.put = function(params,key)
+    {
+        //此处须显式声明事务
+        var transaction = dbObject.db.transaction(dbObject.db_store_name, "readwrite");
+        var store = transaction.objectStore(dbObject.db_store_name);
+        var request = store.put(params,key);
+        request.onsuccess = function(){
+            alert('添加成功');
+        };
+        request.onerror = function(event){
+            console.log(event);
+        }
+    };
+    /**
+     * 删除数据
+     */
+    dbObject.delete = function(id)
+    {
+        // dbObject.db.transaction.objectStore is not a function
+        request = dbObject.db.transaction(dbObject.db_store_name, "readwrite").objectStore(dbObject.db_store_name).delete(id);
+        request.onsuccess = function(){
+            alert('删除成功');
+        }
+    };
+
+    /**
+     * 查询操作
+     */
+    dbObject.select = function(key)
+    {
+        //第二个参数可以省略
+        var transaction = dbObject.db.transaction(dbObject.db_store_name,"readwrite");
+        var store = transaction.objectStore(dbObject.db_store_name);
+        // 不使用游标简单查询
+        // if(key)
+        //     var request = store.get(key);
+        // else
+        //     var request = store.getAll();
+        // 使用游标查询
+        var request = store.openCursor();
+        request.onsuccess = function (event) {
+          var cursor = event.target.result,
+              updateRequest, // 游标更新操作请求对象
+              deleteRequest; // 游标删除操作请求对象
+          if(cursor){
+            console.log(JSON.stringify(cursor.value)); // value is an Object
+          }
+          if(cursor.key === 1){
+            value = cursor.value;
+            value.isbn = 000000;
+            updateRequest = cursor.update(value); // 使用游标更新内容
+            deleteRequest = cursor.delete(value); // 使用游标删除内容
+            /**
+             * continue(key): key可选，表示继续开始下一个请求，如果指定key，直接跳到key所在的项
+             * advance(count): 前进count指定的项数
+             *
+             * continue()和advance()共用一个onsuccess事件处理函数
+             */
+            cursor.continue(2); //游标移动到下一项;key可选，如果存在跳到指定key值
+            updateRequest.onsuccess = function () {
+              // update success
+            };
+            deleteRequest.onsuccess = function () {
+              // delete success
+            }
+          }
+        }
+        // 使用游标范围界定筛选区域
+        var keyRange = window.IDBKeyRange,
+            /**
+             * IDBKeyRange
+             * only(key): 和get(key)一个效果
+             * lowerBound(key, Boolean): 指定游标下界，游标开始的地方，表示游标从key值开始；true表示跳过开始值，默认false
+             * upperBound(key, Boolean): 指定游标上界，游标从开头不能超过key指定的值，true表示不包含key值，默认false
+             * Bound(key, key, Boolean, Boolean): 指定游标上下界
+             */
+            boundRange = keyRange.bound(1, 3, false, false); // 选定介于1和3之间的数据，包含1和3
+        /**
+         * IDBCursor
+         * NEXT: 默认值，下一个
+         * NEXT_NO_DUPLICATE： 下一个非重复的项
+         * PREV： 上一个
+         * PREV_NO_DUPLICATE: 上一个非重复的项
+         */
+        request = store.openCursor(boundRange, IDBCursor.NEXT_NO_DUPLICATE); // 跳过重复的选项
+
+        // 创建索引
+        /**
+         * createIndex(name, keyname, {unique: Boolean}[optional]);
+         * name: 索引的名字
+         * keyname: 索引属性的名字
+         * unique: true表示索引唯一性，false表示不唯一
+         * @return IDBIndex实例
+         */
+        var index = store.createIndex("index", "title", {unique: false});
+        // 获取指定的索引
+        var index = store.index("index"), // index()方法获取指定的索引
+            request = index.openCursor(), // 在索引上创建游标，和对象存储空间上调用一样
+            /**
+             * openKeyCursor() [创建返回主键的游标]
+             * @return event.target.key [索引键]
+             * @return event.target.value [主键]
+             */
+            request = index.openKeyCursor(),
+            /**
+             * 根据给定索引取得主键
+             * getKey(key) [key: 索引键]
+             * @return IBDIndex对象
+             * 属性： event.target.key [索引键]
+             * 属性： event.target.value [主键]
+             * 属性： name [索引名称]
+             * 属性： keyPath 带查看
+             * 属性： objectStore [对象存储空间]
+             * 属性： unique [索引键是否唯一]
+             */
+            request = index.getKey("title"),
+        store.deleteIndex("index"); // 删除指定索引
+    };
+    /**
+     * 清除整个对象存储(表)
+     */
+    dbObject.clear = function()
+    {
+        var request = dbObject.db.transaction(dbObject.db_store_name,"readwrite").objectStore(dbObject.db_store_name).clear();
+        request.onsuccess = function(){
+            alert('清除成功');
+        }
+    };
+    window.dbObject = dbObject;
+})();
+  function init() {
+      var dbParams = new Object();
+      dbParams.db_name = "shen";
+      dbParams.db_version = "2";
+      dbParams.db_store_name = "Test";
+      dbObject.init(dbParams);
+  }
+
+  function Tinsert() {
+      // 填入初始值
+      dbObject.put({ title: "QM", author: "F", isbn: 123456 }, 1);
+      dbObject.put({ title: "WB", author: "F", isbn: 234567 }, 2);
+      dbObject.put({ title: "BN", author: "B", isbn: 345678 }, 3);
+  }
+
+  function Tselect() {
+      dbObject.select(3);
+  }
+
+  function Tupdate() {
+      dbObject.put({ title: "QW", author: "L", isbn: 123456 }, 1);
+  }
+
+  function Tdelete() {
+      dbObject.delete(3);
+  }
+
+  function Tclear() {
+      dbObject.clear();
+  }
+  function Ddelete(name){
+    var DBDeleteRequest = indexedDB.deleteDatabase(name);
+    DBDeleteRequest.onsuccess = function(event) {
+      console.log("Database deleted successfully");
+      console.log(event.result); // should be undefined
+    };
+  }
+```
