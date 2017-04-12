@@ -191,7 +191,7 @@ var handler = {
         alert(name + this.message);
     }
 }
-Event.addHandle(btn, "click", bind(hander.handleClick, hander, "btn"));
+Event.addHandle(btn, "click", bind(handler.handleClick, handler, "btn"));
 ```
 #### 数组分块
 ```javascript
