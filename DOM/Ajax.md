@@ -304,7 +304,13 @@ document.body.insertBefore(script, document.body.firstChild);
 有两种实现Comet方法：`长轮询`和`流【长连接】`  
 1. 传统轮询（短轮询／Ajax），浏览器定时向服务器发送请求更新数据。长轮询把短轮询反过来，页面向服务器发送一个请求，然后服务器链接一直打开，直到有数据可以发送，发送完数据之后，链接关闭，随即有发送一个请求到服务器，这一过程页面打开期间一直不间断。  
 短轮询和长轮询之前都要先对服务器发送请求，区别在于短轮询是服务器立即发送响应，不管数据是否有效，而长轮询是等待发送响应。轮询的优势是所有浏览器都支持，因为使用XHR和setTimeout()就能实现。  
-2. 第二种流行的是HTTP流[个人理解为长连接！！！]。流不同于两种轮询，因为它在页面的整个生命周期内只使用一个HTTP连接。具体来说，浏览器向服务器发送一个请求，服务器保持连接打开，然后周期性的向浏览器发送数据。在Firefox、Safari、Opera和Chrome中，通过监听readystatechange事件及检测readyState是否为3，就可以利用XHR对象实现HTTP流。
+2. 第二种流行的是HTTP流。流不同于两种轮询，因为它在页面的整个生命周期内只使用一个HTTP连接。具体来说，浏览器向服务器发送一个请求，服务器保持连接打开，然后周期性的向浏览器发送数据。在Firefox、Safari、Opera和Chrome中，通过监听readystatechange事件及检测readyState是否为3，就可以利用XHR对象实现HTTP流。  
+区别：对于流方式，客户端发起连接就不会断开连接，而是由服务器端进行控制。当服务器端有更新时，刷新数据，客户端进行更新；而对于长轮询，当服务器端有更新返回，客户端先断开连接，进行处理，然后重新发起连接。  
+iframe流
+iframe流方式是在页面中插入一个隐藏的iframe，利用其src属性在服务器和客户端之间创建一条长链接，服务器向iframe传输数据（通常是HTML，内有负责插入信息的javascript），来实时更新页面。  
+iframe流方式的优点是浏览器兼容好，Google公司在一些产品中使用了iframe流，如Google Talk。  
+Iframe是html标记，这个标记的src属性会保持对指定服务器的长连接请求，服务器端则可以不停地返回数据，相对于第一种方式，这种方式跟传统的服务器推则更接近。  
+在第一种方式中，浏览器在收到数据后会直接调用JS回调函数，但是这种方式该如何响应数据呢？可以通过在返回数据中嵌入JS脚本的方式，如“<script type="text/javascript">js_func(“data from server ”)</script>”，服务器端将返回的数据作为回调函数的参数，浏览器在收到数据后就会执行这段JS脚本。  
 ```javascript
 function createStreamingClient(url, progress, finished){
   var xhr = new XMLHttpRequest(),
