@@ -63,7 +63,7 @@ window.onload = function(){
            };
            break;
        case "mousewheel":
-           window.onmousewheel = function(event){
+           window.onmousewheel = document.onmousewheel = function(event){ // 坑爹的IE8，mousewheel绑定到window上不会触发！！！
                if(event.wheelDelta < 0){
                    // window.cancelAnimationFrame(timer);
                    clearInterval(timer);
