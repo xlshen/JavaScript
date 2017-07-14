@@ -30,3 +30,4 @@
 + [`JavaScript跨域问题`](https://github.com/xlshen/JavaScript/issues/7 "跨域")
 + [`DOM文档解析步骤`](https://github.com/xlshen/JavaScript/issues/8 "DOM解析步骤")
 + [`优雅的返回顶部`](https://github.com/xlshen/JavaScript/blob/master/Tech/Gotop.md "Gotop")
++ [`部署pipeline`](https://github.com/xlshen/JavaScript/blob/master/Tech/pipeline.md "pipeline")
