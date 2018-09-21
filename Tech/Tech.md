@@ -413,7 +413,7 @@ DragDrop.addHandler("dragstart", function(event){
 });
 ```
 #### 图片拍照或选取
-```
+```js
 (function () {
     var takePicture = document.querySelector("#take-picture"),
         showPicture = document.querySelector("#show-picture");
